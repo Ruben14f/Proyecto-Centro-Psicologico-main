@@ -1,0 +1,78 @@
+body {
+    /* CUERPO */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0bf4c;
+    position: relative;
+}
+
+
+/*imagen de carrusel index permite que se quede centrada y no cambie su tamaño o deforme su posicion*/
+.container-flexible {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding-top: 50px; 
+    overflow: hidden; 
+}
+
+.carousel-inner {
+    width: 700px;
+    height: 400px; 
+}
+
+.carousel-item img {
+    width: 100%; 
+    height: 100%;
+    object-fit: cover; 
+}
+
+
+.flex-container {
+    display: flex;
+    max-width: 800px; 
+    margin: 0 auto;
+    overflow: hidden; 
+}
+
+
+.flex-container img {
+    width: 100%; 
+    height: auto; 
+    object-fit: cover; 
+}
+
+
+.conectemos-img {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente la imagen */
+    align-items: center; /* Centra verticalmente la imagen */
+    height: 100px; /* Altura deseada del contenedor */
+    padding-top: 200px;
+    
+}
+
+.conectemos-img img {
+    max-width: 100%; /* Ajusta el ancho máximo de la imagen al contenedor */
+    height: auto; /* Mantiene la proporción de aspecto de la imagen */
+}
+
+
+.conectemos-img{
+    margin-top: 30px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+span#logo-index{
+    color: white;
+    font-weight: bold;
+    font-size: 50px;
+}
+span#slogan{
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    padding-left: 500px;
+}

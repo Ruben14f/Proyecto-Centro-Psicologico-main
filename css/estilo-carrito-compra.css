@@ -1,0 +1,11 @@
+
+
+#logo-carrito-compra:hover{
+    color: rgb(40, 148, 137);
+}
+
+#logo-carrito-compra{
+    color: black;
+    font-size: 50px;
+    padding-right: 20px;
+}

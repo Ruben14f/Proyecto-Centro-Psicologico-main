@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/estilo-inicio-login.css">
+    <link rel="stylesheet" href="css/estilo-footer.css">
+    <link rel="stylesheet" href="css/estilo-body.css">
+    <link rel="stylesheet" href="css/estilo-carrito-compra.css">
+    <title>index</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+    <!--Barra de navegacion que queda en la parte superior de la pagina web-->
+    <nav class="navbar bg-body-tertiary fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="Imagen/conectemoschilelogo.png" alt="Logo Empresa" width="294"
+                    height="38"></a>
+
+            <div class="ms-auto d-flex ali-items-center">
+                <a href="#">
+                    <i id="logo-carrito-compra" class="bi bi-cart-plus-fill"></i>
+                </a>
+                <a id="iniciar-sesion" class="nav-link" data-bs-toggle="modal" data-bs-target="#inicio-sesion-form"
+                    href="#">INICIAR SESIÓN
+                </a>
+            </div>
+
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button> <!--BOTON DE NAV BAR-->
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <a id="inicio-link" class="nav-link" aria-current="page" href="#">
+                        Inicio
+                    </a>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="pagos.html">Reserva Hora</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Servicios
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="terapia-individual.html">Terapía Individual</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="terapia-pareja.html">Terapía de Parejas</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="quienes-somos.html">Quienes Somos</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="conectemos-img">
+        <img src="Imagen/psicologia-logo.png" width="15%" class="img-fluid" alt="conectemos">
+        <span id="logo-index">ConectemonosChile</span>
+    </div>
+    <div class="text-center">
+        <span id="slogan">¡Estamos contigo!</span>
+    </div>
+
+    <div class="container-flexible">
+        <div id="carouselExampleControlsNoTouching" class="carousel carousel-dark slide" data-bs-touch="false">
+            <div class="carousel-inner base">
+                <div class="carousel-item active">
+                    <img src="Imagen/Carrusel/Carrusel-terapia-gen.jpg" class="d-block w-100" alt="">
+                </div>
+                <div class="carousel-item">
+                    <img src="Imagen/Carrusel/Carrusel-terapia-indivi.jpg" class="d-block w-100" alt="">
+                </div>
+                <div class="carousel-item">
+                    <img src="Imagen/Carrusel/Carrusel-terapia-pareja.jpg" class="d-block w-100" alt="">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+            <br>
+        </div>
+    </div>
+
+    <div class="flex-container">
+        <div class="row">
+            <div class="col-md-2 base">
+                <!-- Contenido de la primera columna -->
+                <img src="Imagen/iconos/icono-terapia-indi.png" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-2 base">
+                <!-- Contenido de la segunda columna -->
+                <img src="Imagen/iconos/icono-terapia-pareja.png" class="img-fluid w-100 h-100"
+                    style="object-fit: cover;" alt="">
+            </div>
+            <div class="col-md-2 base">
+                <!-- Contenido de la tercera columna -->
+                <img src="Imagen/iconos/icono-terapia-familiar.png" style="background-color: white;"
+                    class="img-fluid w-100 h-100" style="object-fit: cover;" alt="">
+            </div>
+            <div class="col-md-2 base">
+                <!-- Contenido de la cuarta columna -->
+                <img src="Imagen/iconos/icono-tele-terapia.png" style="background-color: white;"
+                    class="img-fluid w-100 h-100" style="object-fit: cover;" alt="">
+            </div>
+        </div>
+    </div>
+    <br>
+    <p class="text-center">
+        Días malos, días buenos, es la rutina la que uno debe enfrentarse día a día, pero llega un punto en el que colapsas, porque viene un recuerdo de algo que ya sucedio y diambula en tu mente<br>
+        ¿Te has sentido así? <br>
+        Pues bienvenido a Conectemos Chile, en donde nuestros especialistas <br>
+        están listos para ayudarte, volvamos a conectarnos"
+    </p>
+
+
+
+
+
+    <!-- Modal Iniciar Sesion y Registro -->
+
+    <!-- FORMULARIO INICIAR SESION -->
+    <div class="modal fade" id="inicio-sesion-form" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="inicio-sesion-formLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="inicio-sesion-formLabel">INICIO DE SESIÓN</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo</label>
+                            <input type="email" required class="form-control" id="correo-inicio-sesion"
+                                placeholder="nombre@gmail.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" required minlength="6" name="password" id="contraseña-inicio-sesion"
+                                class="form-control" placeholder="*********">
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <a id="registrarse" data-bs-toggle="modal" data-bs-target="#registro-form"
+                                href="#">Registrarse</a>
+                            <a class="" id="contraseña-olvidada" data-bs-toggle="modal" data-bs-target="#registro-form"
+                                href="#">¿Has olvidado tu contraseña?</a>
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Confirmar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FORMULARIO REGISTRO -->
+    <div class="modal fade" id="registro-form" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="registro-formLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="registro-formLabel">REGISTRO</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="nombre">Nombres</label>
+                            <input type="text" id="nombre" name="nombre" class="form-control" required="name">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="apellido">Apellidos</label>
+                            <input type="text" id="apellido" name="apellido" class="form-control" required="apellido">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Telefono</label>
+                            <input type="tel" name="telefono" id="telefono" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="direccion">Direccion</label>
+                            <input type="text" id="direccion" name="direccion" class="form-control"
+                                required="direccion">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo</label>
+                            <input type="email" required class="form-control" id="correo-registro"
+                                placeholder="nombre@gmail.com">
+                        </div>
+                        <!-- SOLICITAR CORREO Y PEDIR CONFIRMACION -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Confirmar Correo</label>
+                            <input type="email" required class="form-control" id="correo-registro-confirmacion"
+                                placeholder="nombre@gmail.com">
+                        </div>
+                        <!-- SOLICITAR CREAR CONTRASEÑA Y PEDIR CONFIRMACION -->
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Crear Contraseña</label>
+                            <input type="password" required minlength="6" name="password" id="contraseña-registro"
+                                class="form-control" placeholder="*********">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Confirmar Contraseña</label>
+                            <input type="password" required minlength="6" name="password"
+                                id="contraseña-registro-confirmacion" class="form-control" placeholder="*********">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Registrarse</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="footer bg-body-tertiary">
+        <div class="container">
+            <div class="row text-center">
+                <!-- Columna del logo -->
+                <div class="col-md-12">
+                    <img id="logo-empresa-footer" src="Imagen/conectemoschilelogo.png" alt="Logo Empresa" width="294"
+                        height="38">
+                </div>
+                <!-- Columna de las redes sociales -->
+                <div class="col-md-12 mt-3">
+                    <a href="#">
+                        <i id="logo-instagram" class="bi bi-instagram"></i>
+                        <span id="nombre-red-social-instragam">Instagram</span>
+                    </a>
+                    <br>
+                    <a href="#">
+                        <i id="logo-facebook" class="bi bi-facebook"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <br>
+                    <a href="#">
+                        <i id="logo-whatsapp" class="bi bi-whatsapp"></i>
+                        <span id="nombre-red-social-whatsapp">Whatsapp</span>
+                    </a>
+                </div>
+                <!-- Columna del copyright -->
+                <div class="col-md-12 mt-3">
+                    <p id="copyright-footer">
+                        Ruben Mansilla y Sebastian Benavides&copy; Derechos de autor
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+
+body{ /* CUERPO */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    position: relative;
+}
+.textos{
+    text-align: center;
+}
+.base {
+    text-align: center;
+    border: 5px solid #111111; /* Ancho, estilo y color del borde */
+    border-radius: 10px; /* Radio de borde para hacerlo más redondeado */
+    padding: 0; /* Espacio alrededor del contenido */
+    margin-top: 100px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.promos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.boton-compra-individual{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.card{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    width: 40rem; 
+    margin: auto; 
+}
+.card h3{
+    text-align: center;
+}
+.card h4{
+    margin-top: 20px;
+}
+.card h5{
+    text-align: center;
+}
+.mapa{
+    margin-top: 30px;
+    display: flex; 
+    justify-content: right; 
+    align-items: center;
+}
+.carta-cuerpo{
+    background-color: white;
+    width: 400px;
+    height: 450px;
+    margin-right: 450px;
+}
+.carta-cuerpo h3{
+    text-align: center;
+}

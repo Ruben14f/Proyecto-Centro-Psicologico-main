@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/terapia-indi.css">
+  <link rel="stylesheet" href="css/estilo-inicio-login.css">
+  <link rel="stylesheet" href="css/estilo-footer.css">
+  <link rel="stylesheet" href="css/estilo-body.css">
+  <link rel="stylesheet" href="css/estilo-carrito-compra.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <title>Terapia Individual</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+  <nav class="navbar bg-body-tertiary fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="Imagen/conectemoschilelogo.png" alt="Logo Empresa" width="294"
+          height="38"></a>
+
+      <div class="ms-auto d-flex ali-items-center">
+        <a href="#">
+          <i id="logo-carrito-compra" class="bi bi-cart-plus-fill"></i>
+        </a>
+        <a id="iniciar-sesion" class="nav-link" data-bs-toggle="modal" data-bs-target="#inicio-sesion-form"
+          href="#">INICIAR SESIÓN
+        </a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> <!--BOTON DE NAV BAR-->
+
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <a id="inicio-link" class="nav-link" aria-current="page" href="index.html"">
+            Inicio
+          </a>
+          <button type=" button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link" href="pagos.html">Reserva Hora</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Servicios
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="terapia-individual.html">Terapía Individual</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="terapia-pareja.html">Terapía de Parejas</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="quienes-somos.html">Quienes Somos</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="base">
+    <div class="row g-0 bg-body-secondary position-relative">
+      <div class="col-md-5 mb-md-0 p-md-4">
+        <img src="Imagen/terapia-indi/terapia-indi.png" class="w-50" alt="terapia_individual">
+      </div>
+      <div class="col-md-6 p-4 ps-md-0">
+        <h2 class="titulo">Terapía Individual</h2>
+        <p>La terapia individual es el encuentro entre el terapeuta y el paciente, en donde en un ambiente de
+          aceptación, confidencialidad y apertura el paciente puede expresar sus problemas y emociones. La terapia
+          individual es un espacio y una oportunidad para pensar, ordenar cosas, evaluar y replantear temas que generan
+          sufrimiento, resolver conflictos, gestar cambios, adquirir herramientas y recursos, liberar cargas y crecer
+          personalmente.</p>
+        <p>En la terapia individual se identifican los conflictos personales y su origen. Estos pueden responder a
+          situaciones especiales o tener su inicio en nuestra historia personal, específicamente en nuestra infancia. La
+          Psicoterapia es más un proceso gradual de comprensión de nuestro mundo interno y del tipo de relaciones que
+          establecemos con los demás.</p>
+        <p>El objetivo de la terapia individual es entender, pararse a pensar, poner en palabras lo que sucede, lograr
+          una mejor relación contigo mismo y con lo que ocurre en tu vida. Comprender por qué repetimos y caemos en lo
+          mismo una y otra vez, superar los momentos difíciles y aprender a tomar las riendas de nuestra vida.</p>
+        <p>Cuando una persona puede verse de distinta forma, puede tener distintas posibilidades de respuesta ante un
+          mismo evento o una misma experiencia. En la terapia se logra cambiar el concepto de uno mismo y sanar las
+          huellas que aún nos afectan.</p>
+        <p>La psicoterapia proporciona un tratamiento efectivo para una amplia variedad de alteraciones psicológicas,
+          que de la mano de psiquiatría contribuye de forma positiva, en la salud mental del paciente, en su sensación
+          de bienestar y en su habilidad de manejar su vida de manera satisfactoria.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="promos">
+    <img src="Imagen/terapia-indi/promos.png" alt="promociones">
+  </div>
+  <div class="boton-compra-individual">
+    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#boton-compra">Haz click
+      aquí para reservar tu hora</button>
+  </div>
+
+  <div class="textos">
+    <h6>Nuestro Equipo</h6>
+    <h4>Contamos con un equipo de profesionales certificados,
+      experimentados y comprometidos con la
+      salud mental de nuestros pacientes.</h4>
+  </div>
+
+  <div class="card">
+    <h4>Director general</h4>
+    <img src="Imagen/especialista.png" alt="especialista">
+    <div class="card-body">
+      <h3>Ángel Díaz</h3>
+      <h5>Psicólogo clínico y deportivo</h5>
+      <p>Enfoque:
+        Psicoanalisis.</p>
+      <p>Tipo de público:
+        Adulto</p>
+      <p>Área de conocimiento:
+        Atención psicológica online, terapia de pareja, violencia en la pareja, coaching deportivo, consecuencias
+        psicológicas de la pandemia ansiedad, depresión y estrés, aplicación de test proyectivos, OQ 42,2, TRO, HTP,
+        árbol, la persona bajo la lluvia y el test de la familia.</p>
+      <p>Contacto:+569 2199 1963</p>
+    </div>
+  </div>
+
+  <!-- Modal Iniciar Sesion y Registro -->
+
+  <!-- FORMULARIO INICIAR SESION -->
+  <div class="modal fade" id="inicio-sesion-form" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="inicio-sesion-formLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="inicio-sesion-formLabel">INICIO DE SESIÓN</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo</label>
+              <input type="email" required class="form-control" id="correo-inicio-sesion"
+                placeholder="nombre@gmail.com">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input type="password" required minlength="6" name="password" id="contraseña-inicio-sesion"
+                class="form-control" placeholder="*********">
+            </div>
+            <div class="text-star">
+              <a id="registrarse" data-bs-toggle="modal" data-bs-target="#registro-form" href="#">Registrarse</a>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn btn-primary">Confirmar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMULARIO REGISTRO -->
+  <div class="modal fade" id="registro-form" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="registro-formLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="registro-formLabel">REGISTRO</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="nombre">Nombres</label>
+              <input type="text" id="nombre" name="nombre" class="form-control" required="name">
+            </div>
+
+            <div class="mb-3">
+              <label for="apellido">Apellidos</label>
+              <input type="text" id="apellido" name="apellido" class="form-control" required="apellido">
+            </div>
+
+            <div class="mb-3">
+              <label for="telefono" class="form-label">Telefono</label>
+              <input type="tel" name="telefono" id="telefono" class="form-control">
+            </div>
+
+            <div class="mb-3">
+              <label for="direccion">Direccion</label>
+              <input type="text" id="direccion" name="direccion" class="form-control" required="direccion">
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo</label>
+              <input type="email" required class="form-control" id="correo-registro" placeholder="nombre@gmail.com">
+            </div>
+            <!-- SOLICITAR CORREO Y PEDIR CONFIRMACION -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Confirmar Correo</label>
+              <input type="email" required class="form-control" id="correo-registro-confirmacion"
+                placeholder="nombre@gmail.com">
+            </div>
+            <!-- SOLICITAR CREAR CONTRASEÑA Y PEDIR CONFIRMACION -->
+            <div class="mb-3">
+              <label for="password" class="form-label">Crear Contraseña</label>
+              <input type="password" required minlength="6" name="password" id="contraseña-registro"
+                class="form-control" placeholder="*********">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Confirmar Contraseña</label>
+              <input type="password" required minlength="6" name="password" id="contraseña-registro-confirmacion"
+                class="form-control" placeholder="*********">
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Registrarse</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="footer bg-body-tertiary">
+    <div class="container">
+      <div class="row text-center">
+        <!-- Columna del logo -->
+        <div class="col-md-12">
+          <img id="logo-empresa-footer" src="Imagen/conectemoschilelogo.png" alt="Logo Empresa" width="294" height="38">
+        </div>
+        <!-- Columna de las redes sociales -->
+        <div class="col-md-12 mt-3">
+          <a href="#">
+            <i id="logo-instagram" class="bi bi-instagram"></i>
+            <span id="nombre-red-social-instragam">Instagram</span>
+          </a>
+          <br>
+          <a href="#">
+            <i id="logo-facebook" class="bi bi-facebook"></i>
+            <span>Facebook</span>
+          </a>
+          <br>
+          <a href="#">
+            <i id="logo-whatsapp" class="bi bi-whatsapp"></i>
+            <span id="nombre-red-social-whatsapp">Whatsapp</span>
+          </a>
+        </div>
+        <!-- Columna del copyright -->
+        <div class="col-md-12 mt-3">
+          <p id="copyright-footer">
+            Ruben Mansilla y Sebastian Benavides&copy; Derechos de autor
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="modal fade" id="boton-compra" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Reserva tu hora</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <label for="opciones">Selecciona la modalidad:</label>
+            <select id="opciones" name="opciones">
+              <option value="opcion1">Sesión Presencial</option>
+              <option value="opcion2">Sesión Online</option>
+            </select>
+          </form>
+          <div class="tex">
+            <br>
+            <p>** Si usted no es de primer ciclo, inicie sesión para confirmar su monto de consulta **</p>
+            <br>
+            <P>Su total a pagar es de : $24.500</P>
+
+            <p></p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#boton-confirmar">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="boton-confirmar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">CONFIRMACIÓN DE HORA</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Gracias por elegirnos. Para confirmar tu hora, debes cancelar su valor en carrito de compras que se
+            encuentra arriba de la página o apretando click en 'Pagar hora'</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <a href="pagos.html" class="btn btn-primary">Pagar hora</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
