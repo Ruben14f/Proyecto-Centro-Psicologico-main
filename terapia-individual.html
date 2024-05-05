@@ -38,7 +38,7 @@
 
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
-          <a id="inicio-link" class="nav-link" aria-current="page" href="index.html"">
+          <a id="inicio-link" class="nav-link" aria-current="page" href="index.html">
             Inicio
           </a>
           <button type=" button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -132,7 +132,9 @@
       <p>Contacto:+569 2199 1963</p>
     </div>
   </div>
-
+  <div id="alerta-validacion" class="alert alert-danger" style="display: none;">
+    Por favor, corrija los errores en el formulario.
+  </div>
   <!-- Modal Iniciar Sesion y Registro -->
 
   <!-- FORMULARIO INICIAR SESION -->
@@ -142,7 +144,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="inicio-sesion-formLabel">INICIO DE SESIÓN</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" id="cerrar-formulario" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form>
@@ -161,7 +163,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="submit" class="btn btn-primary">Confirmar</button>
+              <button type="button" class="btn btn-primary" onclick="iniciarSesion()">Confirmar</button>
             </div>
           </form>
         </div>
@@ -179,14 +181,14 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form id="registros-form">
             <div class="mb-3">
-              <label for="nombre">Nombres</label>
+              <label for="nombre">Nombre</label>
               <input type="text" id="nombre" name="nombre" class="form-control" required="name">
             </div>
 
             <div class="mb-3">
-              <label for="apellido">Apellidos</label>
+              <label for="apellido">Apellido</label>
               <input type="text" id="apellido" name="apellido" class="form-control" required="apellido">
             </div>
 
@@ -222,7 +224,7 @@
                 class="form-control" placeholder="*********">
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-primary">Registrarse</button>
+              <button type="submit" class="btn btn-primary" onclick="registrarse()">Registrarse</button>
             </div>
           </form>
         </div>
@@ -314,6 +316,7 @@
       </div>
     </div>
   </div>
+  <script src="js/registro.js"></script>
 
 </body>
 
