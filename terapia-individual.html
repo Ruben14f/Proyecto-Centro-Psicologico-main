@@ -21,10 +21,10 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="#"><img src="Imagen/conectemoschilelogo.png" alt="Logo Empresa" width="294"
           height="38"></a>
-
       <div class="ms-auto d-flex ali-items-center">
-        <a href="#">
+        <a href="#" id="carrito-compra">
           <i id="logo-carrito-compra" class="bi bi-cart-plus-fill"></i>
+          <span id="cantidad-productos">0</span>
         </a>
         <a id="iniciar-sesion" class="nav-link" data-bs-toggle="modal" data-bs-target="#inicio-sesion-form"
           href="#">INICIAR SESIÓN
@@ -163,7 +163,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" onclick="iniciarSesion()">Confirmar</button>
+              <button type="submit" class="btn btn-primary" onclick="iniciarSesion()">Confirmar</button>
             </div>
           </form>
         </div>
@@ -274,26 +274,36 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
-            <label for="opciones">Selecciona la modalidad:</label>
-            <select id="opciones" name="opciones">
-              <option value="opcion1">Sesión Presencial</option>
-              <option value="opcion2">Sesión Online</option>
-            </select>
-          </form>
           <div class="tex">
+            <h3>LAS CONSULTAS SE DEBEN PAGAR INDIVIDUALMENTE, POR LO QUE NO PODRÁ PAGAR MÁS DE 1 CITA</h3>
             <br>
+            <form id="reserva">
+              <div class="mb-3">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombreReserva" name="nombre" class="form-control" required="name">
+              </div>
+              <div class="mb-3">
+                <label for="apellido">Apellido</label>
+                <input type="text" id="apellidoReserva" name="apellido" class="form-control" required="apellido">
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Correo</label>
+                <input type="email" required class="form-control" id="correoReserva" placeholder="nombre@gmail.com">
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Confirmar Correo</label>
+                <input type="email" required class="form-control" id="correo-registro-confirmacionReserva"
+                  placeholder="nombre@gmail.com">
+              </div>
+            </form>
             <p>** Si usted no es de primer ciclo, inicie sesión para confirmar su monto de consulta **</p>
             <br>
-            <P>Su total a pagar es de : $24.500</P>
-
             <p></p>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-            data-bs-target="#boton-confirmar">Confirmar</button>
+          <button type="button" id="reserva-indi" class="btn btn-primary" onclick="reserva()" >Confirmar</button>
         </div>
       </div>
     </div>
@@ -317,6 +327,7 @@
     </div>
   </div>
   <script src="js/registro.js"></script>
+  <script src="js/carrito-compra.js"></script>
 
 </body>
 
