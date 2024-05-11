@@ -10,11 +10,13 @@ function reserva(){
         let apellido = document.getElementById("apellidoReserva").value.trim();
         let correo =  document.getElementById("correoReserva").value.trim();
         let correoConf = document.getElementById("correo-registro-confirmacionReserva").value.trim();
+        let tipo = document.getElementById("tipo").value.trim();
         if(
             nombre === '' ||
             apellido === '' ||
             correo === '' ||
-            correoConf === ''
+            correoConf === '' ||
+            tipo === '0'
         ){
             alert("Debe rellenar todos los datos disponibles")
         }else{
@@ -28,6 +30,7 @@ function reserva(){
                     nombre: nombre,
                     apellido: apellido,
                     correo: correo,
+                    tipo: tipo,
                 };
                 reservas.push(nuevaReserva);
                 guardarReserva();
@@ -72,10 +75,11 @@ function guardarReserva() {
 console.log(localStorage.getItem(CLAVE_RESERVA));
 //-------------------------------------------------------
 //Reservas (Diferencias entre individual y pareja)
-document.getElementById('carrito-compra').addEventListener('click', function() {
-    // Aquí puedes ejecutar la lógica que deseas cuando se hace clic en el carrito de compras
-    alert('El carrito de compras ha sido clickeado');
+document.getElementById("logo-carrito-compra").addEventListener("click", function() {
+    window.location.href = "carrito.html";
 });
+
+
 const cuentaCarritoElement = document.getElementById("cantidad-productos");
 function actualizarNumeroCarrito(){
     const guardado = JSON.parse(localStorage.getItem(CLAVE_RESERVA)) || []; // Obtener reservas guardadas
@@ -87,29 +91,77 @@ window.onload = function() {
 };
 actualizarNumeroCarrito();
 
-// Función para manejar la reserva individual
-function reservaIndividual() {
-    let contadorIndividual = localStorage.getItem('contadorIndividual') || 0;
+//----------------------------------------------------------
+//Carrito de pago
+// Función para mostrar las reservas en el carrito
+function mostrarReservas() {
+    // Obtener el contenedor de las reservas
+    const carritoItemsContainer = document.getElementById("carrito-items");
 
-    if (contadorIndividual > 0) {
-        return;
+    // Obtener las reservas guardadas en localStorage
+    const reservas = JSON.parse(localStorage.getItem(CLAVE_RESERVA)) || [];
+
+    // Limpiar contenido previo del contenedor
+    carritoItemsContainer.innerHTML = '';
+
+    // Recorrer todas las reservas y agregarlas al contenedor
+    reservas.forEach(reserva => {
+        // Crear un elemento div para la reserva
+        const reservaElement = document.createElement("div");
+        reservaElement.classList.add("carrito-item");
+
+        // Crear el contenido de la reserva
+        const contenidoReserva = `
+            <h2>Reserva: ${reserva.tipo === '1' ? 'Terapia Individual' : 'Terapia de Parejas'}</h2>
+            <p>Nombre de quien reserva: ${reserva.nombre} ${reserva.apellido}</p>
+            <p>Correo: ${reserva.correo}</p>
+            <p>Precio: ${reserva.tipo === '1' ? '$24.500' : '$48.000'}</p>
+        `;
+
+        // Agregar el contenido al elemento de la reserva
+        reservaElement.innerHTML = contenidoReserva;
+
+        // Agregar la reserva al contenedor
+        carritoItemsContainer.appendChild(reservaElement);
+    });
+}
+
+// Llamar a la función para mostrar todas las reservas al cargar la página
+mostrarReservas();
+
+// Función para calcular el precio total de las reservas
+function calcularPrecioTotal() {
+    let precioTotal = 0;
+
+    // Obtener las reservas guardadas en localStorage
+    const reservas = JSON.parse(localStorage.getItem(CLAVE_RESERVA)) || [];
+
+    // Calcular el precio total sumando los precios de las reservas
+    reservas.forEach(reserva => {
+        // Asignar precios según el tipo de terapia
+        if (reserva.tipo === '1') {
+            precioTotal += 24500; 
+        } else {
+            precioTotal += 48000; 
+        }
+    });
+
+    // Actualizar el contenido de la etiqueta <span class="carrito-precio-total">
+    const carritoPrecioTotalElement = document.querySelector(".carrito-precio-total");
+    carritoPrecioTotalElement.textContent = `$${precioTotal.toFixed(2)}`;
+}
+
+// Llamar a la función para calcular el precio total al cargar la página
+calcularPrecioTotal();
+
+function limpiarLocalStorage() {
+    // Verificar si hay datos almacenados bajo la clave CLAVE_RESERVA
+    if (localStorage.getItem(CLAVE_RESERVA)) {
+        localStorage.removeItem(CLAVE_RESERVA);
+        alert("El carrito ha sido vaciado.");
+        window.location.reload();
     } else {
-        contadorIndividual++;
-        localStorage.setItem('contadorIndividual', contadorIndividual);
-        alert('Reserva individual confirmada.');
+        alert("¡UPS! Al parecer, usted no tiene reserva agregada.");
     }
 }
 
-// Función para manejar la reserva de pareja
-function reservaPareja() {
-    let contadorPareja = localStorage.getItem('contadorPareja') || 0;
-
-    if (contadorPareja > 0) {
-        return;
-    } else {
-        contadorPareja++;
-        localStorage.setItem('contadorPareja', contadorPareja);
-        alert('Reserva de pareja confirmada.');
-    }
-}
- 
