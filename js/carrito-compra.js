@@ -148,7 +148,7 @@ function calcularPrecioTotal() {
 
     // Actualizar el contenido de la etiqueta <span class="carrito-precio-total">
     const carritoPrecioTotalElement = document.querySelector(".carrito-precio-total");
-    carritoPrecioTotalElement.textContent = `$${precioTotal.toFixed(2)}`;
+    carritoPrecioTotalElement.textContent = `$${precioTotal}`;
 }
 
 // Llamar a la función para calcular el precio total al cargar la página

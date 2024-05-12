@@ -121,16 +121,13 @@ function iniciarSesion() {
     for (let i = 0; i < paciente.length; i++) {
         if (paciente[i].correo === correo && paciente[i].contraseña === contraseña) {
             usuarioEncontrado = true;
-            // Aquí puedes hacer lo que necesites después de que el usuario inicie sesión
-            // Por ejemplo, redirigir a otra página o mostrar un mensaje de éxito.
             alert("Inicio de sesión exitoso!");
-            // Detener el bucle una vez que se encuentra el usuario
-            break;
+            window.location.reload();
         }
     }
 
     if (!usuarioEncontrado) {
-        alert("Correo o contraseña incorrectos. Por favor, inténtelo de nuevo.");
+        alert("Correo o contraseña incorrectos. Por favor, inténtelo de nuevo.")
     }
 }
 
