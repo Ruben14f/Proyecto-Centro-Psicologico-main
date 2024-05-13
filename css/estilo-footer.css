@@ -35,10 +35,19 @@ span#nombre-red-social-whatsapp{
 }
 /*FIN decoracion de logos y nombres de logo de las redes sociales*/
 
-.footer{
-    margin-top: 20px;
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
+main {
+    flex: 1;
+}
+
+footer.footer {
+    flex-shrink: 0;
+}
 
 #logo-empresa-footer {
     text-align: center;
