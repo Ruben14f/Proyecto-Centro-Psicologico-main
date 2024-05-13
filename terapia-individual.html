@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimun-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
   <link rel="stylesheet" href="css/terapia-indi.css">
@@ -67,70 +67,82 @@
       </div>
     </div>
   </nav>
-  <!--Debemos cambiar está parte-->
-  <div class="base">
-    <div class="row g-0 bg-body-secondary position-relative">
-      <div class="col-md-5 mb-md-0 p-md-4">
-        <img src="Imagen/terapia-indi/terapia-indi.png" class="w-50" alt="terapia_individual">
+
+  <div style="padding:30px;">
+  </div>
+  <div class="main">
+    <div class="d-flex ali-items-center base">
+      <div class="row g-0 bg-body-secondary position-relative">
+        <div class="col-md-5 mb-md-0 p-md-4">
+          <img src="Imagen/terapia-indi/terapia-indi.png" alt="terapia_individual" class="img-fluid">
+        </div>
+        <div class="col-md-6 p-4 ps-md-0">
+          <h2 class="titulo">Terapía Individual</h2>
+          <p>La terapia individual es el encuentro entre el terapeuta y el paciente, en donde en un ambiente de
+            aceptación, confidencialidad y apertura el paciente puede expresar sus problemas y emociones. La terapia
+            individual es un espacio y una oportunidad para pensar, ordenar cosas, evaluar y replantear temas que
+            generan
+            sufrimiento, resolver conflictos, gestar cambios, adquirir herramientas y recursos, liberar cargas y crecer
+            personalmente.</p>
+          <p>En la terapia individual se identifican los conflictos personales y su origen. Estos pueden responder a
+            situaciones especiales o tener su inicio en nuestra historia personal, específicamente en nuestra infancia.
+            La
+            Psicoterapia es más un proceso gradual de comprensión de nuestro mundo interno y del tipo de relaciones que
+            establecemos con los demás.</p>
+          <p>El objetivo de la terapia individual es entender, pararse a pensar, poner en palabras lo que sucede, lograr
+            una mejor relación contigo mismo y con lo que ocurre en tu vida. Comprender por qué repetimos y caemos en lo
+            mismo una y otra vez, superar los momentos difíciles y aprender a tomar las riendas de nuestra vida.</p>
+          <p>Cuando una persona puede verse de distinta forma, puede tener distintas posibilidades de respuesta ante un
+            mismo evento o una misma experiencia. En la terapia se logra cambiar el concepto de uno mismo y sanar las
+            huellas que aún nos afectan.</p>
+          <p>La psicoterapia proporciona un tratamiento efectivo para una amplia variedad de alteraciones psicológicas,
+            que de la mano de psiquiatría contribuye de forma positiva, en la salud mental del paciente, en su sensación
+            de bienestar y en su habilidad de manejar su vida de manera satisfactoria.</p>
+        </div>
       </div>
-      <div class="col-md-6 p-4 ps-md-0">
-        <h2 class="titulo">Terapía Individual</h2>
-        <p>La terapia individual es el encuentro entre el terapeuta y el paciente, en donde en un ambiente de
-          aceptación, confidencialidad y apertura el paciente puede expresar sus problemas y emociones. La terapia
-          individual es un espacio y una oportunidad para pensar, ordenar cosas, evaluar y replantear temas que generan
-          sufrimiento, resolver conflictos, gestar cambios, adquirir herramientas y recursos, liberar cargas y crecer
-          personalmente.</p>
-        <p>En la terapia individual se identifican los conflictos personales y su origen. Estos pueden responder a
-          situaciones especiales o tener su inicio en nuestra historia personal, específicamente en nuestra infancia. La
-          Psicoterapia es más un proceso gradual de comprensión de nuestro mundo interno y del tipo de relaciones que
-          establecemos con los demás.</p>
-        <p>El objetivo de la terapia individual es entender, pararse a pensar, poner en palabras lo que sucede, lograr
-          una mejor relación contigo mismo y con lo que ocurre en tu vida. Comprender por qué repetimos y caemos en lo
-          mismo una y otra vez, superar los momentos difíciles y aprender a tomar las riendas de nuestra vida.</p>
-        <p>Cuando una persona puede verse de distinta forma, puede tener distintas posibilidades de respuesta ante un
-          mismo evento o una misma experiencia. En la terapia se logra cambiar el concepto de uno mismo y sanar las
-          huellas que aún nos afectan.</p>
-        <p>La psicoterapia proporciona un tratamiento efectivo para una amplia variedad de alteraciones psicológicas,
-          que de la mano de psiquiatría contribuye de forma positiva, en la salud mental del paciente, en su sensación
-          de bienestar y en su habilidad de manejar su vida de manera satisfactoria.</p>
+    </div>
+
+    <div style="padding:50px;">
+    </div>
+
+    <div class=" ali-items-center">
+      <div class="promos">
+        <img src="Imagen/terapia-indi/promos.png" alt="promociones" class="img-fluid">>
+      </div>
+    </div>
+    <div class="boton-compra-individual" style="padding: 50px;">
+      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#boton-compra">Haz
+        click
+        aquí para reservar tu hora</button>
+    </div>
+
+    <div class="textos">
+      <h6>Nuestro Equipo</h6>
+      <h4>Contamos con un equipo de profesionales certificados,
+        experimentados y comprometidos con la
+        salud mental de nuestros pacientes.</h4>
+    </div>
+
+    <div class="d-flex align-items-center" style="padding-top: 50px;">
+      <div class="card">
+          <h4 class="card-title">Director general</h4>
+          <img src="Imagen/especialista.png" alt="especialista" class="card-img-top">
+          <div class="card-body" style="max-height: 400px; overflow-y: auto;">
+              <h3>Ángel Díaz</h3>
+              <h5>Psicólogo clínico y deportivo</h5>
+              <p>Enfoque: Psicoanálisis.</p>
+              <p>Tipo de público: Adulto</p>
+              <p>Área de conocimiento: Atención psicológica online, terapia de pareja, violencia en la pareja, coaching deportivo, consecuencias psicológicas de la pandemia ansiedad, depresión y estrés, aplicación de test proyectivos, OQ 42,2, TRO, HTP, árbol, la persona bajo la lluvia y el test de la familia.</p>
+              <p>Contacto: +569 2199 1963</p>
+          </div>
       </div>
     </div>
   </div>
-
-  <div class="promos">
-    <img src="Imagen/terapia-indi/promos.png" alt="promociones">
-  </div>
-  <div class="boton-compra-individual">
-    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#boton-compra">Haz click
-      aquí para reservar tu hora</button>
-  </div>
-
-  <div class="textos">
-    <h6>Nuestro Equipo</h6>
-    <h4>Contamos con un equipo de profesionales certificados,
-      experimentados y comprometidos con la
-      salud mental de nuestros pacientes.</h4>
-  </div>
-
-  <div class="card">
-    <h4>Director general</h4>
-    <img src="Imagen/especialista.png" alt="especialista">
-    <div class="card-body">
-      <h3>Ángel Díaz</h3>
-      <h5>Psicólogo clínico y deportivo</h5>
-      <p>Enfoque:
-        Psicoanalisis.</p>
-      <p>Tipo de público:
-        Adulto</p>
-      <p>Área de conocimiento:
-        Atención psicológica online, terapia de pareja, violencia en la pareja, coaching deportivo, consecuencias
-        psicológicas de la pandemia ansiedad, depresión y estrés, aplicación de test proyectivos, OQ 42,2, TRO, HTP,
-        árbol, la persona bajo la lluvia y el test de la familia.</p>
-      <p>Contacto:+569 2199 1963</p>
-    </div>
+  <div style="padding:50px;">
   </div>
   <div id="alerta-validacion" class="alert alert-danger" style="display: none;">
     Por favor, corrija los errores en el formulario.
+  </div>
   </div>
   <!-- Modal Iniciar Sesion y Registro -->
 
@@ -141,7 +153,8 @@
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="inicio-sesion-formLabel">INICIO DE SESIÓN</h1>
-          <button type="button" class="btn-close" id="cerrar-formulario" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" id="cerrar-formulario" data-bs-dismiss="modal"
+            aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form id="inicios">
@@ -303,12 +316,12 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" id="reserva-indi" class="btn btn-primary" onclick="reserva()" >Confirmar</button>
+          <button type="button" id="reserva-indi" class="btn btn-primary" onclick="reserva()">Confirmar</button>
         </div>
       </div>
     </div>
   </div>
-  
+
   <script src="js/registro.js"></script>
   <script src="js/carrito-compra.js"></script>
 
