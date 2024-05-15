@@ -40,6 +40,14 @@ body {
     }
 }
 
+/* Ajusta el tamaño de las imágenes en pantallas grandes y extra grandes */
+@media (min-width: 992px) {
+    .col-6 {
+        flex: 0 0 10%; 
+        max-width: 10%; 
+    }
+}
+
 
 /* Elimina los estilos w-100 y h-100 de las imágenes en las columnas */
 .flex-container img {
@@ -51,8 +59,8 @@ body {
 /* Ajusta el tamaño de las columnas en dispositivos pequeños */
 @media (max-width: 576px) {
     .col-6 {
-        flex: 0 0 30%; 
-        max-width: 30%; 
+        flex: 0 0 35%; 
+        max-width: 35%; 
     }
 }
 
@@ -61,7 +69,7 @@ body {
     justify-content: center; 
     align-items: center; 
     height: 100px; 
-    padding-top: 200px;
+    padding-top: 250px;
     
 }
 
