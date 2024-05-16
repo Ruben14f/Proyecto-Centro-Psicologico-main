@@ -48,3 +48,38 @@
 .carrito-total .btn-pagar:hover{
     scale: 1.05;
 }
+
+/* Agrega estas reglas de estilo CSS */
+@media screen and (max-width: 1024px) {
+    .carrito {
+      width: 80%; /* Cambia el ancho del carrito en pantallas más pequeñas */
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .carrito-total {
+      padding: 15px; /* Reduce el padding en pantallas más pequeñas */
+    }
+    .carrito-total .fila {
+      font-size: 18px; /* Reduce el tamaño de fuente en pantallas más pequeñas */
+    }
+    .carrito-total .btn-pagar {
+      font-size: 16px; /* Reduce el tamaño de fuente del botón en pantallas más pequeñas */
+    }
+  }
+
+  @media screen and (max-width: 344px) {
+    .carrito {
+      width: 100%; /* Cambia el ancho del carrito en pantallas más pequeñas */
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .carrito-total {
+      padding: 10px; /* Reduce el padding en pantallas más pequeñas */
+    }
+    .carrito-total .fila {
+      font-size: 10px; /* Reduce el tamaño de fuente en pantallas más pequeñas */
+    }
+    .carrito-total .btn-pagar {
+      font-size: 10px; /* Reduce el tamaño de fuente del botón en pantallas más pequeñas */
+    }
+  }

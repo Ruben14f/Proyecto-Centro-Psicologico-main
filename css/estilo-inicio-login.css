@@ -61,16 +61,7 @@
     text-align: center;
 }
 
-.carta-cuerpo {
-    background-color: white;
-    width: 400px;
-    height: 450px;
-    margin-right: 450px;
-}
 
-.carta-cuerpo h3 {
-    text-align: center;
-}
 
 #inicio-link {
     font-weight: bold;
@@ -108,7 +99,15 @@
 h5,a {
     text-decoration: none;
     display: inline;
-    margin-left: 10px; /* Ajusta el margen entre el nombre y el icono según sea necesario */
+    margin-left: 10px; 
 }
-
-
+carta
+.carta-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+  }
+  .carta {
+    text-align: center; 
+}
