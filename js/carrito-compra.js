@@ -74,7 +74,7 @@ function guardarReserva() {
 }
 console.log(localStorage.getItem(CLAVE_RESERVA));
 //-------------------------------------------------------
-//Reservas (Diferencias entre individual y pareja)
+//Carrito)
 document.getElementById("logo-carrito-compra").addEventListener("click", function() {
     window.location.href = "carrito.html";
 });
@@ -162,6 +162,13 @@ function limpiarLocalStorage() {
         window.location.reload();
     } else {
         alert("¡UPS! Al parecer, usted no tiene reserva agregada.");
+    }
+}
+function pasoDePago(event) {
+    // Verificar si el carrito tiene datos o no en el localStorage
+    if (!localStorage.getItem(CLAVE_RESERVA)) {
+        alert("Usted no tiene ninguna reserva, por favor seleccione alguna para continuar su reserva");
+        event.preventDefault(); 
     }
 }
 
