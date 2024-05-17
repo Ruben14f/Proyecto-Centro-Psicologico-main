@@ -49,9 +49,6 @@
 
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li class="nav-item">
-                <a class="nav-link" href="pagos.html">Reserva Hora</a>
-              </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                   aria-expanded="false">
@@ -91,7 +88,7 @@
             <strong>Tu Total</strong>
             <span class="carrito-precio-total"></span>
           </div>
-          <a href="pagos.html" class="btn-pagar">Pagar<i class="fa-solid fa-bag-shopping"></i></a>
+          <a href="pagos.html" class="btn-pagar" onclick="pasoDePago(event)">Pagar<i class="fa-solid fa-bag-shopping"></i></a>
           <button type="button" class="btn-eliminar" aria-label="Close" onclick="limpiarLocalStorage()">VACIAR SU
             CARRITO</button>
         </div>
