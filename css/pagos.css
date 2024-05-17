@@ -90,7 +90,7 @@ h1 {
 }
 
 .hora-btn:active
-.hora-btn:hover{
+{
     background-color: #ccc; /* Cambia el color de fondo cuando se hace clic en el botón */
     color: #000; 
 }
@@ -134,10 +134,21 @@ select {
 }
 
 .enviar-btn {
-    background-color: #4CAF50;
+    background-color: orange;
     color: #fff;
     border: none;
     padding: 10px 20px;
     border-radius: 3px;
     cursor: pointer;
+}
+#modal-mensaje{
+    .modal-content{
+        padding: 12px;
+        
+    }
+
+    p{
+        width: 100%;
+        text-align: center;
+    }
 }
