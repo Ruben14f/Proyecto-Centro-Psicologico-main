@@ -108,13 +108,17 @@
       </div>
       <div class="campo">
         <label for="modalidad">Indique modalidad</label>
-        <input type="text" id="modalidad" placeholder="Presencial u Online" required>
-      </div>
+        <select id="modalidad" required>
+            <option value="" disabled selected>Seleccione una opción</option>
+            <option value="Presencial">Presencial</option>
+            <option value="Online">Online</option>
+        </select>
+    </div>
       <div class="campo">
         <label for="email">Email</label>
         <input type="email" id="email" placeholder="email@example.com" required>
       </div>
-      <button class="btn btn-primary w-100" id="btn-verificar" onclick="verificar()">Verificar!</button>
+      <button class="btn btn-primary w-100" id="btn-verificar" onclick="verificar()">Agendar</button>
     </div>
   </div>
   
