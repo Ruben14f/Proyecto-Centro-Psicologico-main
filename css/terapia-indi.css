@@ -60,3 +60,6 @@ body{ /* CUERPO */
 .carta-cuerpo h3{
     text-align: center;
 }
+.mb-4 {
+    margin-top: 20px;
+}

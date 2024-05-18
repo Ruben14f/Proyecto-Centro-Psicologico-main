@@ -11,12 +11,14 @@ function reserva(){
         let correo =  document.getElementById("correoReserva").value.trim();
         let correoConf = document.getElementById("correo-registro-confirmacionReserva").value.trim();
         let tipo = document.getElementById("tipo").value.trim();
+        let tipo2 = document.getElementById("tipo2").value.trim();
         if(
             nombre === '' ||
             apellido === '' ||
             correo === '' ||
             correoConf === '' ||
-            tipo === '0'
+            tipo === '0' ||
+            tipo2 === '0'
         ){
             alert("Debe rellenar todos los datos disponibles")
         }else{
@@ -31,6 +33,7 @@ function reserva(){
                     apellido: apellido,
                     correo: correo,
                     tipo: tipo,
+                    tipo2: tipo2,
                 };
                 reservas.push(nuevaReserva);
                 guardarReserva();
@@ -116,6 +119,7 @@ function mostrarReservas() {
             <p>Nombre de quien reserva: ${reserva.nombre} ${reserva.apellido}</p>
             <p>Correo: ${reserva.correo}</p>
             <p>Precio: ${reserva.tipo === '1' ? '$24.500' : '$48.000'}</p>
+            <p>Modalidad: ${reserva.tipo2 === '1' ? 'Presencial' : 'Online'}</p>
         `;
 
         // Agregar el contenido al elemento de la reserva
