@@ -4,19 +4,22 @@ let reservas = [
 
 const CLAVE_RESERVA = "datos_reserva";
 
-function reserva(){
+function reserva(event){
     try{
         let nombre = document.getElementById("nombreReserva").value.trim();
         let apellido = document.getElementById("apellidoReserva").value.trim();
         let correo =  document.getElementById("correoReserva").value.trim();
         let correoConf = document.getElementById("correo-registro-confirmacionReserva").value.trim();
+        let telefono2 = parseInt(document.getElementById("telefono2").value.trim());
         let tipo = document.getElementById("tipo").value.trim();
         let tipo2 = document.getElementById("tipo2").value.trim();
+        let reseteo = document.getElementById("reserva");
         if(
             nombre === '' ||
             apellido === '' ||
             correo === '' ||
             correoConf === '' ||
+            telefono2 === 0 ||
             tipo === '0' ||
             tipo2 === '0'
         ){
@@ -25,20 +28,23 @@ function reserva(){
             if(!validarCorreo(correo)){
                 alert("Correo electronico no válido. Por favor, ingrese un correo electronico")
                 return;
-            }
-            else {
+            } if (localStorage.getItem(CLAVE_RESERVA)) {
+                alert("Usted ya tiene una reserva agregada, por lo que debe cancelarla antes de pedir otra")
+                reseteo.reset();
+                event.preventDefault(); 
+            }else {
                 // Crear nueva reserva
                 let nuevaReserva = {
                     nombre: nombre,
                     apellido: apellido,
                     correo: correo,
+                    telefono: telefono2,
                     tipo: tipo,
                     tipo2: tipo2,
                 };
                 reservas.push(nuevaReserva);
                 guardarReserva();
                 alert("La reserva ha sido agregada al carrito de compras");
-                let reseteo = document.getElementById("reserva");
                 reseteo.reset();
                 let cantidadProductos = reservas.length; // Obtenemos la cantidad de reservas en el carrito
                 document.getElementById('cantidad-productos').textContent = cantidadProductos;
@@ -67,6 +73,9 @@ function validarCorreo(correo){
 
     return true;
 }
+
+
+//RESERVAAAAAAAAS
 function guardarReserva() {
     const guardado = JSON.parse(localStorage.getItem(CLAVE_RESERVA)) || [];
     // Agregar los nuevos registros al array existente
@@ -118,8 +127,9 @@ function mostrarReservas() {
             <h2>Reserva: ${reserva.tipo === '1' ? 'Terapia Individual' : 'Terapia de Parejas'}</h2>
             <p>Nombre de quien reserva: ${reserva.nombre} ${reserva.apellido}</p>
             <p>Correo: ${reserva.correo}</p>
-            <p>Precio: ${reserva.tipo === '1' ? '$24.500' : '$48.000'}</p>
+            <p>Télefono: ${reserva.telefono}</p>
             <p>Modalidad: ${reserva.tipo2 === '1' ? 'Presencial' : 'Online'}</p>
+            <p>Precio: ${reserva.tipo === '1' ? '$24.500' : '$48.000'}</p>
         `;
 
         // Agregar el contenido al elemento de la reserva

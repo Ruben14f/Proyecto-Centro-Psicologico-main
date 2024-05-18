@@ -99,19 +99,10 @@
         <div class="ubicacion">
           <span>Av. Pedro de Valdivia 273</span>
         </div>
+        <div class="carrito-items" id="carrito-items">
+          <!-- Aquí se mostrarán las reservas -->
+        </div>
       </div>
-        <div class="campo form-group">
-          <label for="telefono">Número de teléfono</label>
-          <input type="tel" id="telefono" class="form-control" placeholder="+569" required>
-        </div>
-        <div class="campo form-group">
-          <label for="modalidad">Indique modalidad</label>
-          <select id="modalidad" class="form-control" required>
-            <option value="" disabled selected>Seleccione una opción</option>
-            <option value="Presencial">Presencial</option>
-            <option value="Online">Online</option>
-          </select>
-        </div>
         <button type="submit" class="btn btn-primary w-100" id="btn-verificar">Agendar</button>
       </div>
     </form>
@@ -232,7 +223,7 @@
       </div>
     </div>
   </div>
-
+  <!--Mensaje de aprobación-->
   <div class="modal fade" id="modal-reserva-exitosa" tabindex="-1" aria-labelledby="modalReservaExitosaLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
