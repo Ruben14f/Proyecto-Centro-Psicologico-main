@@ -75,49 +75,48 @@
 
   <div class="container">
     <h1>Reserva de Hora</h1>
-    <div class="agenda">
-      <h2>Agenda</h2>
-      <div class="fecha">
-        <label for="fecha" class="form-label">Fecha deseada:</label>
-        <input type="date" required max="2024-12-31" class="form-control" id="fecha" placeholder="Elige la fecha!">
+    <form id="reserva-form">
+      <div class="agenda">
+        <h2>Agenda</h2>
+        <div class="fecha form-group">
+          <label for="fecha" class="form-label">Fecha deseada:</label>
+          <input type="date" required max="2024-12-31" class="form-control" id="fecha" placeholder="Elige la fecha!">
+        </div>
+        <div class="horas form-group">
+          <label>Seleccione una hora:</label>
+          <div>
+            <button type="button" class="hora-btn btn btn-outline-primary">09:00</button>
+            <button type="button" class="hora-btn btn btn-outline-primary">10:00</button>
+            <button type="button" class="hora-btn btn btn-outline-primary">11:00</button>
+            <button type="button" class="hora-btn btn btn-outline-primary">12:00</button>
+            <button type="button" class="hora-btn btn btn-outline-primary">13:00</button>
+            <button type="button" class="hora-btn btn btn-outline-primary">14:00</button>
+            <button type="button" class="hora-btn btn btn-outline-primary">15:00</button>
+            <button type="button" class="hora-btn btn btn-outline-primary">16:00</button>
+            <button type="button" class="hora-btn btn btn-outline-primary">17:00</button>
+          </div>
+        </div>
+        <div class="ubicacion">
+          <span>Av. Pedro de Valdivia 273</span>
+        </div>
       </div>
-      <div class="horas">
-        <button class="hora-btn">09:00</button>
-        <button class="hora-btn">10:00</button>
-        <button class="hora-btn">11:00</button>
-        <button class="hora-btn">12:00</button>
-        <button class="hora-btn">13:00</button>
-        <button class="hora-btn">14:00</button>
-        <button class="hora-btn">15:00</button>
-        <button class="hora-btn">16:00</button>
-        <button class="hora-btn">17:00</button>
+        <div class="campo form-group">
+          <label for="telefono">Número de teléfono</label>
+          <input type="tel" id="telefono" class="form-control" placeholder="+569" required>
+        </div>
+        <div class="campo form-group">
+          <label for="modalidad">Indique modalidad</label>
+          <select id="modalidad" class="form-control" required>
+            <option value="" disabled selected>Seleccione una opción</option>
+            <option value="Presencial">Presencial</option>
+            <option value="Online">Online</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary w-100" id="btn-verificar">Agendar</button>
       </div>
-      <div class="ubicacion">
-        <span>Av. Pedro de Valdivia 273</span>
-      </div>
-    </div>
-    <div class="formulario">
-      <div class="campo">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" placeholder="Nombres" required>
-        <input type="text" id="apellido" placeholder="Apellidos" required>
-      </div>
-      <div class="campo">
-        <label for="telefono">Número de teléfono</label>
-        <input type="tel" id="telefono" placeholder="+569" required>
-      </div>
-      <div class="campo">
-        <label for="modalidad">Indique modalidad</label>
-        <input type="text" id="modalidad" placeholder="Presencial u Online" required>
-      </div>
-      <div class="campo">
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="email@example.com" required>
-      </div>
-      <button class="btn btn-primary w-100" id="btn-verificar" onclick="verificar()">Verificar!</button>
-    </div>
+    </form>
   </div>
-  
+
 
   <div style="padding: 20px;"> </div>
   <div class="texto-pago">
@@ -228,9 +227,25 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <p>
-
         </p>
         <button class="btn btn-primary w-100" data-bs-dismiss="modal" style="background-color: orange;">Ok</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal-reserva-exitosa" tabindex="-1" aria-labelledby="modalReservaExitosaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalReservaExitosaLabel">Reserva Exitosa</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Tu reserva ha sido confirmada. Recibirás un correo con la confirmación de tu hora.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok</button>
+        </div>
       </div>
     </div>
   </div>

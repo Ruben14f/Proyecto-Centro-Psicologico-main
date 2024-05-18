@@ -152,3 +152,11 @@ select {
         text-align: center;
     }
 }
+
+.hora-btn {
+    margin: 5px;
+}
+.hora-btn.selected{
+    background-color: #007bff;
+    color: white;
+}
