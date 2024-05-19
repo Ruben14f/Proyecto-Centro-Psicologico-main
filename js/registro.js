@@ -113,7 +113,6 @@ function iniciarSesion() {
         alert("Por favor, ingrese el correo y la contraseña.");
         return;
     }
-
     let usuarioEncontrado = false;
 
         // Verificar si el correo y la contraseña coinciden con algún usuario registrado
@@ -124,7 +123,6 @@ function iniciarSesion() {
             window.location.reload();
         }
     }
-
     if (!usuarioEncontrado) {
         alert("Correo o contraseña incorrectos. Por favor, inténtelo de nuevo.")
     }
