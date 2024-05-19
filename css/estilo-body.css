@@ -86,4 +86,20 @@ span#slogan{
     padding-left: 500px;
 }
 
+.boton {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 25px;
+    color: #fff;
+    background-color: rgb(207, 165, 87);
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin: 5px; 
+}
 
+.boton:hover {
+    background-color: rgb(40, 148, 137);
+}
