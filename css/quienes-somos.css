@@ -145,3 +145,24 @@ body {
     }
 
 }
+@media (max-width: 360px) {
+    .mision-vision {
+        flex-direction: column;
+        margin: 0 20px; /* Reducir el margen para pantallas más pequeñas */
+    }
+    .card {
+        width: 100%; /* Asegura que las tarjetas ocupen el ancho completo en pantallas pequeñas */
+    }
+
+    .container-flexible {
+        padding-right: 0; /* Elimina el padding derecho en pantallas pequeñas */
+    }
+    #mision{
+        width: 100%;
+    }
+
+    #vision{
+        width: 100%;
+    }
+
+}
