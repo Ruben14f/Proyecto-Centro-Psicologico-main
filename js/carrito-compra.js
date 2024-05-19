@@ -28,7 +28,10 @@ function reserva(event){
             if(!validarCorreo(correo)){
                 alert("Correo electronico no válido. Por favor, ingrese un correo electronico")
                 return;
-            } if (localStorage.getItem(CLAVE_RESERVA)) {
+            }if(!validarTelefono(telefono2)){
+                alert("Teléfono no válido. Debe ser un número de al menos 8 dígitos.");
+                return;
+            }if (localStorage.getItem(CLAVE_RESERVA)) {
                 alert("Usted ya tiene una reserva agregada, por lo que debe cancelarla antes de pedir otra")
                 reseteo.reset();
                 event.preventDefault(); 
@@ -72,6 +75,10 @@ function validarCorreo(correo){
     }
 
     return true;
+}
+function validarTelefono(telefono) {
+    const regexTelefono = /^\d{8,}$/;
+    return regexTelefono.test(telefono);
 }
 
 
