@@ -1,3 +1,10 @@
+let reservasFinal = [
+
+];
+
+const CLAVE_RESERVAFINAL = "datos_reserva_final";
+
+
 function mostrarMensaje(mensaje) {
     const textP = document.querySelector('#modal-mensaje p');
     textP.innerText = mensaje;
@@ -42,8 +49,27 @@ async function verificar() {
             } else if (esFeriado) {
                 mostrarMensaje('No puede elegir esta fecha ya que es feriado: ' + esFeriado.title);
             } else {
-                const reservaExitosaModal = new bootstrap.Modal(document.getElementById('modal-reserva-exitosa'));
-                reservaExitosaModal.show();
+                let reservaFinal = {
+                    fecha: fechaSeleccionada,
+                    hora: horaSeleccionada.innerText
+                };
+                const reservasGuardadas = JSON.parse(localStorage.getItem(CLAVE_RESERVAFINAL)) || [];
+                const horaTomada = reservasGuardadas.some(reserva =>
+                    reserva.fecha === reservaFinal.fecha && reserva.hora === reservaFinal.hora
+                );
+
+                if (horaTomada) {
+                    mostrarMensaje('No puede reservar esta fecha y hora porque ya está ocupada.');
+                } if (!localStorage.getItem(CLAVE_RESERVA)) {
+                    mostrarMensaje("Usted no tiene ninguna reserva, por lo que no puede tomar ninguna hora");
+                } else {
+                    reservasFinal.push(reservaFinal);
+                    guardarReservaFinal();
+
+                    const reservaExitosaModal = new bootstrap.Modal(document.getElementById('modal-reserva-exitosa'));
+                    limpiarLocalStorageFIN();
+                    reservaExitosaModal.show();
+                }
             }
 
         } catch (error) {
@@ -68,4 +94,14 @@ document.getElementById('reserva-form').addEventListener('submit', function (eve
     verificar();
 });
 
+function cargo(){
+    window.location.reload();
+}
 
+function guardarReservaFinal() {
+    const guardado = JSON.parse(localStorage.getItem(CLAVE_RESERVAFINAL)) || [];
+    guardado.push(...reservasFinal);
+    localStorage.setItem(CLAVE_RESERVAFINAL, JSON.stringify(guardado));
+    reservasFinal = []; // Limpiar el array temporal
+}
+console.log(localStorage.getItem(CLAVE_RESERVAFINAL));

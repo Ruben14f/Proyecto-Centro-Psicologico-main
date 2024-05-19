@@ -82,7 +82,6 @@ function guardarReserva() {
     guardado.push(...reservas);
     // Guardar el array completo en localStorage
     localStorage.setItem(CLAVE_RESERVA, JSON.stringify(guardado));
-    localStorage.setItem("cantidadReservas", reservas.length);
 }
 console.log(localStorage.getItem(CLAVE_RESERVA));
 //-------------------------------------------------------
@@ -185,4 +184,9 @@ function pasoDePago(event) {
         event.preventDefault(); 
     }
 }
-
+function limpiarLocalStorageFIN() {
+    // Verificar si hay datos almacenados bajo la clave CLAVE_RESERVA
+    if (localStorage.getItem(CLAVE_RESERVA)) {
+        localStorage.removeItem(CLAVE_RESERVA);
+    }
+}
