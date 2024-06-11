@@ -3,6 +3,7 @@
 
 {% block title %}Terapias{% endblock %}
 {% block content %}
+{% load crispy_forms_tags %}
 <div style="padding:30px;">
 </div>
 <div class="main">
@@ -161,7 +162,7 @@
         <div class="tex">
           <form id="contactoForm" method="POST">
             {% csrf_token %}
-            {{ form  }}
+            {{ form | crispy }}
           </form>
           <p>** Si usted no es de primer ciclo, inicie sesión para confirmar su monto de consulta **</p>
           <br>

@@ -1,1 +1,2 @@
 django-admin-interface
+django-crispy-forms
