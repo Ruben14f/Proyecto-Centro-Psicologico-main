@@ -171,25 +171,60 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" id="reserva-indi" class="btn btn-primary" onclick="reservaD()">Confirmar</button>
+        <button type="button" id="reserva-indi" class="btn btn-primary" onclick="reservaD(event)">Confirmar</button>
       </div>
     </div>
   </div>
 </div>
 
+
 <script type="text/javascript">
-  function reservaD() {
+  function reservaD(event) {
+    event.preventDefault(); // Prevenir el envío del formulario por defecto
     var form = document.getElementById('contactoForm');
     if (form.checkValidity()) {
         // Si el formulario es válido, enviar los datos y cerrar el modal
         form.submit();
         $('#boton-compra').modal('hide'); // Cerrar el modal
+
+        // Lógica para manejar el carrito localmente
+        agregarAlCarrito();
     } else {
-        // Si el formulario no es válido, mostrar las validaciones
+        // Si el formulario no es válido, mostrar las validaciones de formularios
         form.reportValidity();
     }
   }
 
+  // Función para agregar la reserva al carrito localmente
+  function agregarAlCarrito() {
+    let reserva = {
+      nombre: document.getElementById('id_nombre').value.trim(),
+      apellido: document.getElementById('id_apellido').value.trim(),
+      correo: document.getElementById('id_correo').value.trim(),
+      telefono: parseInt(document.getElementById('id_telefono').value.trim()),
+      tipo_consulta: document.getElementById('id_tipo_consulta').value.trim(),
+      tipo_modalidad: document.getElementById('id_tipo_modalidad').value.trim(),
+    };
+
+    let reservasGuardadas = JSON.parse(localStorage.getItem('datos_reserva')) || [];
+    reservasGuardadas.push(reserva);
+    localStorage.setItem('datos_reserva', JSON.stringify(reservasGuardadas));
+
+    // Actualizar contador de reservas en el carrito (si es necesario)
+    actualizarNumeroCarrito();
+  }
+
+  // Función para actualizar el contador del carrito
+  function actualizarNumeroCarrito() {
+    let reservasGuardadas = JSON.parse(localStorage.getItem('datos_reserva')) || [];
+    let cantidadProductos = reservasGuardadas.length;
+    document.getElementById('cantidad-productos').textContent = cantidadProductos;
+  }
+
+  // Llamar a la función para actualizar el contador al cargar la página
+  window.onload = function() {
+    actualizarNumeroCarrito();
+  };
 </script>
 <!-- FORMULARIO RESERVA HORA -->>
 {% endblock %}

@@ -6,13 +6,13 @@ const CLAVE_RESERVA = "datos_reserva";
 
 function reserva(event){
     try{
-        let nombre = document.getElementById("id_nombre").value.trim();
-        let apellido = document.getElementById("id_apellido").value.trim();
-        let correo = document.getElementById("id_correo").value.trim();
-        let correoConf = document.getElementById("id_correo-registro-confirmacion").value.trim();
-        let telefono2 = parseInt(document.getElementById("id_telefono2").value.trim());
-        let tipo = document.getElementById("id_tipo").value.trim();
-        let tipo2 = document.getElementById("id_tipo2").value.trim();
+        let nombre = document.getElementById("nombreReserva").value.trim();
+        let apellido = document.getElementById("apellidoReserva").value.trim();
+        let correo =  document.getElementById("correoReserva").value.trim();
+        let correoConf = document.getElementById("correo-registro-confirmacionReserva").value.trim();
+        let telefono2 = parseInt(document.getElementById("telefono2").value.trim());
+        let tipo = document.getElementById("tipo").value.trim();
+        let tipo2 = document.getElementById("tipo2").value.trim();
         let reseteo = document.getElementById("reserva");
         if(
             nombre === '' ||

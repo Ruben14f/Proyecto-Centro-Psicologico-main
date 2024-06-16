@@ -26,7 +26,7 @@
             <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'core/Imagen/conectemoschilelogo.png' %}" alt="Logo Empresa" width="294"
                     height="38"></a>
             <div class="ms-auto d-flex ali-items-center">
-                <a href="#">
+                <a href="{% url 'carrito' %}">
                     <i id="logo-carrito-compra" class="bi bi-cart-plus-fill" style="cursor: pointer;"></i>
                     <span id="cantidad-productos">0</span>
                 </a>
@@ -113,8 +113,8 @@
         </div>
     </footer>
     <!-- Javascript -->
-    <script src="{% static 'js/registro.js' %}"></script>
-    <script src="{% static 'js/carrito-compra.js' %}"></script>
+    <script src="{% static 'core/js/registro.js' %}"></script>
+    <script src="{% static 'core/js/carrito-compra.js' %}"></script>
 
 </body>
 
