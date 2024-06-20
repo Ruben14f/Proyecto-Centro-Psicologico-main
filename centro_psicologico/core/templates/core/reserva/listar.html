@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Reservas{% endblock %}
+{% block content %}
+
+
+<div style="padding-top: 150px;">
+
+</div>
+<div class="card">
+    <div class="card-body">
+        <h2>Listado de Reservas</h2>
+        <hr>
+        <table class="table table-striped table-hover table-responsive">
+            <tr>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Tipo Consulta</th>
+                <th>Tipo Modalidad</th>
+                <th>Opciones</th>
+            </tr>
+            {% for r in reservas %}
+            <tr>
+                <td>{{ r.nombre }}</td>
+                <td>{{ r.telefono }}</td>
+                <td>{{ r.get_tipo_consulta_display }}</td>
+                <td>{{ r.get_tipo_modalidad_display }}</td>
+                <td> 
+                    <a href="{% url 'modificar_reserva' r.id %}" class="btn btn-info btn-sm" style="margin-right: 5px;">Modificar</a>
+                    <a href="{% url 'eliminar_reserva' r.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+
+<div style="padding-bottom: 150px;">
+
+</div>
+
+
+{% endblock %}

@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.base import TemplateView
 from .forms import ReservationForm
+from .models import ReservaHora
 # Create your views here.
 
 class InicioPaginaView(TemplateView):
@@ -33,3 +34,33 @@ class CarritoView(TemplateView):
 class PagosView(TemplateView):
     template_name = "core/pagos.html"
 
+def listar_reserva(request):
+    reservas = ReservaHora.objects.all()
+    data = {
+        'reservas': reservas
+    }
+    return render(request, 'core/reserva/listar.html', data)
+
+def modificar_reserva(request, id):
+    
+    reservas = get_object_or_404(ReservaHora, id=id)
+    
+    if request.method == 'POST':
+        formulario = ReservationForm(data=request.POST, instance=reservas)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('listar_reserva')
+    else:
+        form = ReservationForm(instance=reservas)
+        form.fields.pop('correo_confirm', None)
+    data = {
+        'form': ReservationForm(instance=reservas)
+    }
+    
+    
+    return render(request, 'core/reserva/modificar.html',data)
+
+def eliminar_reserva(request, id):
+    reservas = get_object_or_404(ReservaHora, id=id)
+    reservas.delete()
+    return redirect('listar_reserva')

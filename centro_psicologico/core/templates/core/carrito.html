@@ -17,7 +17,9 @@
       <h2>Tu Carrito</h2>
     </div>
     <div class="carrito-items" id="carrito-items">
-      <!-- Aquí se mostrarán las reservas -->
+      {% for reserva in reservas %}
+      <li>{{reserva.nombre}}</li>
+      {% endfor %}
     </div>
     <div class="carrito-total">
       <div class="fila">
