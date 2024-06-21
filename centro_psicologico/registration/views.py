@@ -1,6 +1,7 @@
 from .forms import UserCreationFormWithEmail, ProfileForm, EmailForm
+from django.shortcuts import redirect
 from django.views.generic import CreateView
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, DeleteView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
@@ -53,4 +54,10 @@ class EmailUpdate(UpdateView):
             attrs={'class':'form-control mb-2', 'placeholder':'Email'})
         return form
     
+@method_decorator(login_required, name='dispatch')
+class ProfileDelete(DeleteView):
+    model = Profile
+    template_name = 'registration/profile_confirm_delete.html'
+    success_url = reverse_lazy('index') 
+
 
