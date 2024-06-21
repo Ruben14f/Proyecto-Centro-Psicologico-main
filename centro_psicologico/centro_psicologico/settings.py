@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core.apps.AppConfig',
     'profiles',
-    'reservas',
     'colorfield',
     'crispy_forms',
     'crispy_bootstrap5',
