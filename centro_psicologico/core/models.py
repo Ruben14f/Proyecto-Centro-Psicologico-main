@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 #arreglo de opciones para tipo_consulta
