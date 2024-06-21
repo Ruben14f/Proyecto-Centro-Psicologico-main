@@ -41,6 +41,11 @@
                     <li id="iniciar-sesion" class="nav-item">
                         <a class="nav-link" href="{% url 'profile' %}">Perfil</a>
                     </li>
+                    {% if request.user.is_superuser %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'profiles:list' %}">Perfiles</a>
+                        </li>
+                    {% endif %}
                     <div style="display: none;"><form name="formSignout" action="{% url 'logout' %}" method="post">{% csrf_token %}</form></div>
                     <li id="iniciar-sesion" class="nav-item">
                         <a class="nav-link" href="#" onClick="document.formSignout.submit();return false">Salir</a>

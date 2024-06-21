@@ -30,6 +30,7 @@
                                 Y si quieres cambiar tu contraseña haz click <a href="{% url 'password_change' %}">Aqui</a>.
                             </p>
                             <input type="submit" class="btn btn-primary btn-block mt-3" value="Actualizar">
+                            <a class="btn btn-danger btn-block mt-3" href="{% url 'profile_delete' request.user.profile.pk %}">Eliminar cuenta</a>
                         </div>
                     </div>
                 </form>
