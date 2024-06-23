@@ -4,6 +4,7 @@
 {% block title %}Reservas{% endblock %}
 {% block content %}
 
+<link rel="stylesheet" href="{% static 'core/css/estilo-listar.css' %}">
 
 {% if not request.user.is_authenticated %}
 <div style="padding-top: 150px;">
@@ -42,6 +43,7 @@
                         <th>Teléfono</th>
                         <th>Tipo Consulta</th>
                         <th>Tipo Modalidad</th>
+                        <th>Fecha de Reserva</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
@@ -52,10 +54,10 @@
                         <td>{{ r.telefono }}</td>
                         <td>{{ r.get_tipo_consulta_display }}</td>
                         <td>{{ r.get_tipo_modalidad_display }}</td>
+                        <td>{{ r.fecha }} {{ r.hora }} </td>
                         <td>
                             <div class="btn-group" role="group">
                                 <a href="{% url 'modificar_reserva' r.id %}" class="btn btn-info btn-sm">Modificar</a>
-                                &nbsp;
                                 <a href="{% url 'eliminar_reserva' r.id %}" class="btn btn-danger btn-sm">Eliminar</a>
                             </div>
                         </td>
@@ -69,11 +71,13 @@
 </div>
 
 
+
 <div style="padding-bottom: 200px;">
 
 </div>
 
 {% endif %}
 
+<script src="js/feriados.js"></script>
 
 {% endblock %}

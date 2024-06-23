@@ -12,18 +12,15 @@ class TerapiasView(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form'] = ReservationForm(user=self.request.user)  
+        context['form'] = ReservationForm()
         return context
     
     def post(self, request, *args, **kwargs):
-        data = self.get_context_data()
-        reservaform = ReservationForm(request.POST, user=request.user)
+        reservaform = ReservationForm(request.POST)
         if reservaform.is_valid():
-            reservaform.save()
-            data["mensaje"] = "Reserva guardada con éxito."
-        else:
-            data["form"] = reservaform
-        return self.render_to_response(data)
+            reserva = reservaform.save()  # Guardar la reserva y obtener el objeto
+            return redirect('pagos', reserva_id=reserva.id)  # Redirigir a la vista de pagos con el ID de la reserva
+        return self.render_to_response(self.get_context_data(form=reservaform))
 
 class QuienesSomosView(TemplateView):
     template_name = "core/quienes-somos.html"
@@ -31,16 +28,34 @@ class QuienesSomosView(TemplateView):
 class CarritoView(TemplateView):
     template_name = "core/carrito.html"
     
+    def get(self, request, reserva_id):
+        reserva = get_object_or_404(ReservaHora, pk=reserva_id)
+        context = {
+            'reserva': reserva,
+            'reserva_id': reserva_id
+        }
+        return render(request, self.template_name, context)
+
+
 class PagosView(TemplateView):
     template_name = "core/pagos.html"
-
+    
+    def get(self, request, reserva_id):
+        reserva = get_object_or_404(ReservaHora, pk=reserva_id)
+        context = {
+            'reserva': reserva,
+            'reserva_id': reserva_id
+        }
+        return render(request, self.template_name, context)
+    
+    
 def listar_reserva(request):
+    
     reservas = ReservaHora.objects.all()
     data = {
         'reservas': reservas
     }
     return render(request, 'core/reserva/listar.html', data)
-
 def modificar_reserva(request, id):
     
     reservas = get_object_or_404(ReservaHora, id=id)
@@ -51,12 +66,11 @@ def modificar_reserva(request, id):
             formulario.save()
             return redirect('listar_reserva')
     else:
-        form = ReservationForm(instance=reservas)
-        form.fields.pop('correo_confirm', None)
+        formulario = ReservationForm(instance=reservas)
+        
     data = {
         'form': ReservationForm(instance=reservas)
     }
-    
     
     return render(request, 'core/reserva/modificar.html',data)
 

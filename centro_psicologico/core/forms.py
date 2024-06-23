@@ -8,17 +8,17 @@ class ReservationForm(forms.ModelForm):
         labels = {
             'nombre': 'Nombre',
             'apellido': 'Apellido',
-            'correo': 'Correo',
-            'correo_confirm': 'Confirmar Correo',
             'telefono': 'Teléfono',
             'tipo_consulta': 'Tipo de Terapia',
-            'tipo_modalidad': 'Modalidad'
+            'tipo_modalidad': 'Modalidad',
+            'fecha': 'Fecha deseada',
+            'hora': 'Seleccione una hora'
         }
-    
-    #verificar si esta con sesion iniciada no solicitara el correo del paciente, de lo contrario si solicitara correo
-    def __init__(self, *args, **kwargs):
-        user = kwargs.pop('user', None)
-        super(ReservationForm, self).__init__(*args, **kwargs)
-        if user and user.is_authenticated:
-            del self.fields['correo']
-            del self.fields['correo_confirm']
+        widgets = {
+            'fecha': forms.DateInput(attrs={'type': 'date', 'class': 'form-control', 'max': '2024-12-31'}),
+            'hora': forms.Select(choices=[
+                ('09:00', '09:00'), ('10:00', '10:00'), ('11:00', '11:00'),
+                ('12:00', '12:00'), ('13:00', '13:00'), ('14:00', '14:00'),
+                ('15:00', '15:00'), ('16:00', '16:00'), ('17:00', '17:00')
+            ], attrs={'class': 'form-control'}),
+        }
