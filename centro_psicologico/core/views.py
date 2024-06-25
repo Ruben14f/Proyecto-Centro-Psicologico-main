@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.base import TemplateView
 from .forms import ReservationForm
 from .models import ReservaHora
+from django.urls import reverse
 # Create your views here.
 
 class InicioPaginaView(TemplateView):
@@ -35,6 +36,11 @@ class CarritoView(TemplateView):
             'reserva_id': reserva_id
         }
         return render(request, self.template_name, context)
+
+    def post(self, request, reserva_id):
+        reserva = get_object_or_404(ReservaHora, pk=reserva_id)
+        reserva.delete()
+        return redirect(reverse('terapias'))
 
 
 class PagosView(TemplateView):
@@ -75,6 +81,7 @@ def modificar_reserva(request, id):
     return render(request, 'core/reserva/modificar.html',data)
 
 def eliminar_reserva(request, id):
-    reservas = get_object_or_404(ReservaHora, id=id)
-    reservas.delete()
-    return redirect('listar_reserva')
+    reserva = get_object_or_404(ReservaHora, id=id)
+    reserva.delete()
+
+    return redirect('listar_reserva')  

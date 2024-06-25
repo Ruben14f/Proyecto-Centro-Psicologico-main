@@ -5,45 +5,118 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-<link rel="stylesheet" href="{% static 'core/css/cart.css' %}">
-<div style="padding-top: 50px;"></div>
+<!DOCTYPE html>
+<html lang="es">
 
-<div class="container">
-  <div class="carrito" id="carrito">
-    <div class="header-carrito">
-      <h2>Tu Carrito</h2>
-    </div>
-    <table class="table table-striped table-hover">
-      <tr>
-        <th>Nombre</th>
-        <th>Tipo Consulta</th>
-        <th>Tipo Modalidad</th>
-        <th>Fecha de Reserva</th>
-      </tr>
-      <tr>
-        <td>{{ reserva.nombre }} {{ reserva.apellido }}</td>
-        <td>{{ reserva.get_tipo_consulta_display }}</td>
-        <td>{{ reserva.get_tipo_modalidad_display }}</td>
-        <td>{{ reserva.fecha }} {{ reserva.hora }}</td>
-      </tr>
-    </table>
-    <div class="carrito-total">
-      <div class="fila">
-        <strong>Tu Total</strong>
-        <span class="carrito-precio-total">${{ reserva.calcular_precio }}</span> <!-- Mostrar el precio total calculado -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Pago</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'core/css/cart.css' %}">
+  <link rel="stylesheet" href="{% static 'core/css/pago-tarjeta.css' %}">
+</head>
+
+<body>
+
+  <div style="padding-top: 50px;"></div>
+
+  <div class="container">
+    <div class="carrito" id="carrito">
+      <div class="header-carrito">
+        <h2>Tu Carrito</h2>
       </div>
-      {% if reserva %}
-      <a href="{% url 'pagos' reserva_id=reserva.id %}" class="btn-pagar">Pagar<i class="fa-solid fa-bag-shopping"></i></a>
-      {% endif %}
-      <button type="button" class="btn-eliminar" aria-label="Close" onclick="limpiarLocalStorage()">VACIAR SU CARRITO</button>
+      <table class="table table-striped table-hover">
+        <tr>
+          <th>Nombre</th>
+          <th>Tipo Consulta</th>
+          <th>Tipo Modalidad</th>
+          <th>Fecha de Reserva</th>
+        </tr>
+        <tr>
+          <td>{{ reserva.nombre }} {{ reserva.apellido }}</td>
+          <td>{{ reserva.get_tipo_consulta_display }}</td>
+          <td>{{ reserva.get_tipo_modalidad_display }}</td>
+          <td>{{ reserva.fecha }} {{ reserva.hora }}</td>
+        </tr>
+      </table>
+      <div class="carrito-total">
+        <div class="fila">
+          <strong>Tu Total</strong>
+          <span class="carrito-precio-total">${{ reserva.calcular_precio }}</span>
+        </div>
+        {% if reserva %}
+        <button type="button" class="btn-pagar" data-bs-toggle="modal" data-bs-target="#boton-compra">Pagar</button>
+        {% endif %}
+        <form method="post" action="{% url 'carrito' reserva_id %}">
+          {% csrf_token %}
+          <button type="submit" class="btn-eliminar">VACIAR SU CARRITO</button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 
-<div style="padding-top: 50px;"></div>
+  <!-- FORMULARIO RESERVA HORA -->
+  <div class="modal fade" id="boton-compra" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="payment-form">
+            <h2>Formulario de Pago</h2>
 
-<script src="{% static 'core/js/registro.js' %}"></script>
-<script src="{% static 'core/js/carrito-compra.js' %}"></script>
+            <label for="card-name">Nombre en la Tarjeta</label>
+            <input type="text" id="card-name" name="card-name" required>
+
+            <label for="card-number">Número de Tarjeta</label>
+            <input type="text" id="card-number" name="card-number" placeholder="xxxx-xxxx-xxxx-xxxx" required>
+
+            <div class="row">
+              <div class="col">
+                <label for="expiry-date">Fecha de Expiración</label>
+                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/AA" required>
+              </div>
+              <div class="col">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" required>
+              </div>
+            </div>
+            <button type="submit" class="button-cart" onclick="pagar()">Pagar</button>
+            &nbsp;
+            <button type="button" class="btn btn-secondary button-cart" data-bs-dismiss="modal">Cerrar</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
 
 
+  <div style="padding-top: 50px;"></div>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script src="{% static 'core/js/registro.js' %}"></script>
+  <script src="{% static 'core/js/carrito-compra.js' %}"></script>
+
+  <script>
+    function pagar() {
+      event.preventDefault();
+      var form = document.getElementById('payment-form');
+      if (form.checkValidity()) {
+        form.submit();
+        window.location.href = "{% url 'terapias' %}";
+        $('#boton-compra').modal('hide');
+      } else {
+        form.reportValidity();
+      }
+    }
+  </script>
+</body>
+
+</html>
 {% endblock %}

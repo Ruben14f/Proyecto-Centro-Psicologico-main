@@ -80,11 +80,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'quienes-somos' %}">Quienes Somos</a>
                         </li>
-                        {% if not request.user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'listar_reserva' %}">Reservas</a>
                         </li>
-                        {% endif %}
                     </ul>
                 </div>
             </div>
