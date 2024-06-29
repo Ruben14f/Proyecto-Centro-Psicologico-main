@@ -1,0 +1,24 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Confirmación de pago{% endblock %}
+{% block content %}
+<div style="padding:30px;">
+</div>
+<div class="main">
+  <div class="d-flex ali-items-center base">
+    <div class="row g-0 bg-body-secondary position-relative">
+      <div class="col-md-5 mb-md-0 p-md-4">
+      </div>
+      <div class="col-md-6 p-4 ps-md-0">
+        <h2 class="titulo">CONFIRMACIÓN DE SU COMPRA</h2>
+        <p>Gracias por confiar en nosotros. Daremos lo mejor para ser ese apoyo que necesitas para ser tu mejor versión.</p>
+      </div>
+    </div>
+  </div>
+    <script src="{% static 'core/js/reserva.js' %}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            limpiarLocalStorage()
+        });
+    </script>
+{% endblock %}

@@ -7,6 +7,9 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django import forms
 from .models import Profile
+from django.contrib.auth.models import User
+from django.http import HttpResponseForbidden
+
 
 # Create your views here.
 class SignUpView(CreateView):
@@ -58,6 +61,17 @@ class EmailUpdate(UpdateView):
 class ProfileDelete(DeleteView):
     model = Profile
     template_name = 'registration/profile_confirm_delete.html'
-    success_url = reverse_lazy('index') 
+    success_url = reverse_lazy('index')
 
+    def get_object(self, queryset=None):
+        obj = super(ProfileDelete, self).get_object(queryset)
+        if obj.user != self.request.user:
+            return HttpResponseForbidden()
+        return obj
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        user = self.object.user
+        user.delete()
+        return redirect(self.success_url)
 

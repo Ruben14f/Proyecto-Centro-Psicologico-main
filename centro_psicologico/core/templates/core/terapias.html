@@ -110,9 +110,9 @@
 
     <!-- BOTON PARA FORMULARIO RESERVA HORA -->
     <div class="boton-compra-individual d-flex justify-content-center align-items-center" style="padding: 50px;">
-      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#boton-compra">Haz
+      <a href="{% url 'pagos' %}" class="boton">Haz
         click
-        aquí para reservar tu hora</button>
+        aquí para reservar tu hora</a>
     </div>
     <!-- BOTON PARA FORMULARIO RESERVA HORA -->
 
@@ -148,12 +148,6 @@
   </div>
 
 </div>
-<!-- BOTON PARA FORMULARIO RESERVA HORA -->
-<div class="boton-compra-individual d-flex justify-content-center align-items-center" style="padding: 50px;">
-  <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#boton-compra">Haz
-    click
-    aquí para reservar tu hora</button>
-</div>
 
 <!-- FORMULARIO RESERVA HORA -->>
 <div class="modal fade" id="boton-compra" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -183,7 +177,7 @@
 </div>
 
 
-<script src="{% static 'js/feriados.js' %}"></script>
+
 
 <script type="text/javascript">
   function reservaD(event) {

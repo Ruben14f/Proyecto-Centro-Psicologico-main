@@ -22,3 +22,8 @@ class ProfileDetailView(DetailView):
 class ProfileDelete(DeleteView):
     model = Profile
     success_url = reverse_lazy('index')
+    
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.delete()
+        return super().delete(request, *args, **kwargs)
