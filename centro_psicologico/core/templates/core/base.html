@@ -24,17 +24,10 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'core/Imagen/conectemoschilelogo.png' %}" alt="Logo Empresa" width="294" height="38"></a>
             <div class="ms-auto d-flex ali-items-center">
-                {% if reserva_id %}
-                    <a href="{% url 'carrito' reserva_id %}">
-                        <i id="logo-carrito-compra" class="bi bi-cart-plus-fill" style="cursor: pointer;"></i>
-                        <span id="cantidad-productos">0</span>
-                    </a>
-                {% else %}
-                    <a href="#">
-                        <i id="logo-carrito-compra" class="bi bi-cart-plus-fill" style="cursor: pointer;"></i>
-                        <span id="cantidad-productos">0</span>
-                    </a>
-                {% endif %}
+                <a href="{% url 'carrito' %}">
+                    <i id="logo-carrito-compra" class="bi bi-cart-plus-fill"></i>
+                    <span id="cantidad-productos">0</span>
+                </a>
                 {% if not request.user.is_authenticated %}
                     <li id="iniciar-sesion" class="nav-item">
                         <a class="nav-link" href="{% url 'login' %}">Iniciar Sesión</a>

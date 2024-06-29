@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.base import TemplateView
 from .forms import ReservationForm
 from .models import ReservaHora
-from django.urls import reverse
+from django.shortcuts import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
+
 # Create your views here.
 
 class InicioPaginaView(TemplateView):
@@ -28,31 +31,10 @@ class QuienesSomosView(TemplateView):
 
 class CarritoView(TemplateView):
     template_name = "core/carrito.html"
-    
-    def get(self, request, reserva_id):
-        reserva = get_object_or_404(ReservaHora, pk=reserva_id)
-        context = {
-            'reserva': reserva,
-            'reserva_id': reserva_id
-        }
-        return render(request, self.template_name, context)
-
-    def post(self, request, reserva_id):
-        reserva = get_object_or_404(ReservaHora, pk=reserva_id)
-        reserva.delete()
-        return redirect(reverse('terapias'))
-
 
 class PagosView(TemplateView):
     template_name = "core/pagos.html"
-    
-    def get(self, request, reserva_id):
-        reserva = get_object_or_404(ReservaHora, pk=reserva_id)
-        context = {
-            'reserva': reserva,
-            'reserva_id': reserva_id
-        }
-        return render(request, self.template_name, context)
+
     
     
 def listar_reserva(request):
@@ -85,3 +67,33 @@ def eliminar_reserva(request, id):
     reserva.delete()
 
     return redirect('listar_reserva')  
+
+
+class RedirectView(TemplateView):
+    template_name = "core/redirect.html"
+
+class RedirectConfirmarView(TemplateView):
+    template_name = "core/redirect_confirmar.html"
+
+@csrf_exempt
+def guardar_reservas(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            # Procesar los datos y guardar las reservas en la base de datos
+            for reserva_data in data:
+                reserva = ReservaHora(
+                    nombre=reserva_data['nombre'],
+                    apellido=reserva_data['apellido'],
+                    telefono=reserva_data['telefono'],
+                    tipo_consulta=reserva_data['tipo'],
+                    tipo_modalidad=reserva_data['tipo2'],
+                    fecha=reserva_data['fecha'],
+                    hora=reserva_data['hora']
+                )
+                reserva.save()
+            return HttpResponse(status=200)  # Respuesta exitosa
+        except json.JSONDecodeError as e:
+            return HttpResponse(status=400)  # Error en el formato JSON
+    else:
+        return HttpResponse(status=405)  # Método no permitido
