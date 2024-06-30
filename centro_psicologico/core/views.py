@@ -5,6 +5,8 @@ from .models import ReservaHora
 from django.shortcuts import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
+from django.core.paginator import Paginator
+from django.http import Http404
 
 # Create your views here.
 
@@ -40,8 +42,17 @@ class PagosView(TemplateView):
 def listar_reserva(request):
     
     reservas = ReservaHora.objects.all()
+    page = request.GET.get('page',1)
+    
+    try:
+        paginator = Paginator(reservas, 5)
+        reservas = paginator.get_page(page)
+    except:
+        raise Http404
+    
     data = {
-        'reservas': reservas
+        'reservas': reservas,
+        'paginator': paginator
     }
     return render(request, 'core/reserva/listar.html', data)
 def modificar_reserva(request, id):

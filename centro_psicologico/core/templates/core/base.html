@@ -122,7 +122,6 @@
     <script src="{% static 'core/js/carrito-compra.js' %}"></script>
 
     <script>
-        // Función para actualizar el contador del carrito
         function actualizarContadorCarrito() {
             const reservas = JSON.parse(localStorage.getItem(CLAVE_RESERVAFINAL)) || [];
             const cantidadProductos = reservas.length;
@@ -131,8 +130,6 @@
                 contadorElemento.textContent = cantidadProductos;
             }
         }
-        
-        // Llamar a la función para actualizar el contador al cargar la página
         actualizarContadorCarrito();
     </script>
 
