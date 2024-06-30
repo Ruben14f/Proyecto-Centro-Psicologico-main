@@ -2,15 +2,9 @@ let reservasFinal = [];
 
 const CLAVE_RESERVAFINAL = "datos_reserva_final";
 
-async function verificar(event) {
-
+async function verificar() {
     const url = 'https://api.boostr.cl/holidays.json';
     const datePicker = document.getElementById('fecha');
-    if (reservasGuardadas.length > 0) {
-        alert("Ya tienes una reserva en el carrito. No puedes agregar más.");
-        event.preventDefault();
-        return;  // Detener la ejecución de la función
-    }
 
     if (datePicker.reportValidity() && datePicker.value) {
         try {
@@ -44,47 +38,29 @@ async function verificar(event) {
                 let telefono = parseInt(document.getElementById('telefono2').value.trim());
                 let tipo = document.getElementById('tipo').value.trim();
                 let tipo2 = document.getElementById('tipo2').value.trim();
-                let reseteo = document.getElementById("reserva");
-                if(
-                    nombre === '' ||
-                    apellido === '' ||
-                    telefono === 0 ||
-                    tipo === '0' ||
-                    tipo2 === '0'
-                ){
-                    alert("Debe rellenar todos los datos disponibles")
-                }else{
-                    if (localStorage.getItem(CLAVE_RESERVA)) {
-                        alert("Usted ya tiene una reserva agregada, por lo que debe cancelarla antes de pedir otra")
-                        reseteo.reset();
-                        event.preventDefault(); 
-                    }else {
-                        let reservaFinal = {
-                            nombre: nombre,
-                            apellido: apellido,
-                            telefono: telefono,
-                            tipo: tipo,
-                            tipo2: tipo2,
-                            fecha: fechaSeleccionada,
-                            hora: horaSeleccionada.innerText
-                        };
 
-                        const reservasGuardadas = JSON.parse(localStorage.getItem(CLAVE_RESERVAFINAL)) || [];
-                        const horaTomada = reservasGuardadas.some(reserva =>
-                            reserva.fecha === reservaFinal.fecha && reserva.hora === reservaFinal.hora
-                        );
+                let reservaFinal = {
+                    nombre: nombre,
+                    apellido: apellido,
+                    telefono: telefono,
+                    tipo: tipo,
+                    tipo2: tipo2,
+                    fecha: fechaSeleccionada,
+                    hora: horaSeleccionada.innerText
+                };
 
-                        if (horaTomada) {
-                            mostrarMensaje('No puede reservar esta fecha y hora porque ya está ocupada.');
-                        } else {
-                            reservasGuardadas.push(reservaFinal);
-                            localStorage.setItem(CLAVE_RESERVAFINAL, JSON.stringify(reservasGuardadas));
-                            alert("La reserva ha sido agregada al carrito de compras");
-                            actualizarContadorCarrito();  // Actualizar el contador
-                            // let cantidadProductos = reservasGuardadas.length;
-                            // document.getElementById('cantidad-productos').textContent = cantidadProductos;
-                        }
-                    }
+                const reservasGuardadas = JSON.parse(localStorage.getItem(CLAVE_RESERVAFINAL)) || [];
+                const horaTomada = reservasGuardadas.some(reserva =>
+                    reserva.fecha === reservaFinal.fecha && reserva.hora === reservaFinal.hora
+                );
+
+                if (horaTomada) {
+                    mostrarMensaje('No puede reservar esta fecha y hora porque ya está ocupada.');
+                } else {
+                    reservasGuardadas.push(reservaFinal);
+                    localStorage.setItem(CLAVE_RESERVAFINAL, JSON.stringify(reservasGuardadas));
+                    alert("La reserva ha sido agregada al carrito de compras");
+                    actualizarContadorCarrito();  // Actualizar el contador
                 }
             }
         } catch (error) {
@@ -206,14 +182,12 @@ function pasoDePago(event) {
     } 
 }
 
-function enviarReservasAJAX(event) {
-    event.preventDefault();
+function enviarReservasAJAX() {
 
     const reservas = JSON.parse(localStorage.getItem('datos_reserva_final')) || [];
 
     if (reservas.length === 0) {
         alert("No tienes ninguna reserva seleccionada. Por favor, selecciona una reserva para continuar.");
-        event.preventDefault();
         return;  // Detiene la función si no hay reservas para enviar
     }
 
@@ -221,22 +195,37 @@ function enviarReservasAJAX(event) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRFToken': '{{ csrf_token }}', // Asegúrate de incluir el token CSRF en la cabecera
+            'X-CSRFToken': getCookie('csrftoken') // Obtener el token CSRF
         },
         body: JSON.stringify(reservas),
     })
-    .then(response => {
-        if (response.ok) {
+    .then(response => response.json())
+    .then(data => {
+        if (data.message) {
             console.log('Reservas enviadas correctamente al backend.');
-            // Opcional: Limpiar localStorage después de enviar las reservas
             localStorage.removeItem('datos_reserva_final');
-            // Redirigir u actualizar la interfaz si es necesario
-            window.location.reload();
+            window.location.href = "{% url 'wait_and_redirect' %}"; // Redirigir después de enviar las reservas
         } else {
-            console.error('Error al enviar reservas al backend.');
+            console.error('Error en la respuesta del backend:', data.error);
         }
     })
     .catch(error => {
         console.error('Ocurrió un error al enviar reservas:', error);
     });
+}
+
+document.querySelector('.btn-pagar').addEventListener('click', enviarReservasAJAX);
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
 }

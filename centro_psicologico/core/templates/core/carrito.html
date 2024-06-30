@@ -36,6 +36,7 @@
           <div class="fila">
             <strong>Tu Total</strong>
             <span class="carrito-precio-total"></span>
+            {% csrf_token %}
           </div>
           <a href="{% url 'wait_and_redirect' %}" class="btn-pagar" onclick="enviarReservasAJAX()">Pagar<i class="fa-solid fa-bag-shopping"></i></a>
           <button type="button" class="btn-eliminar" aria-label="Close" onclick="limpiarLocalStorage()">VACIAR SU
