@@ -193,6 +193,7 @@ function enviarReservasAJAX() {
 
     fetch('/guardar-reservas/', {
         method: 'POST',
+        
         headers: {
             'Content-Type': 'application/json',
             'X-CSRFToken': getCookie('csrftoken') // Obtener el token CSRF
