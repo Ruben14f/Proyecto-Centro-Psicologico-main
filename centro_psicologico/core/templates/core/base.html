@@ -118,7 +118,23 @@
     </footer>
     <!-- Javascript -->
     <script src="{% static 'core/js/registro.js' %}"></script>
+    <script src="{% static 'core/js/reserva.js' %}"></script>
     <script src="{% static 'core/js/carrito-compra.js' %}"></script>
+
+    <script>
+        // Función para actualizar el contador del carrito
+        function actualizarContadorCarrito() {
+            const reservas = JSON.parse(localStorage.getItem(CLAVE_RESERVAFINAL)) || [];
+            const cantidadProductos = reservas.length;
+            const contadorElemento = document.getElementById('cantidad-productos');
+            if (contadorElemento) {
+                contadorElemento.textContent = cantidadProductos;
+            }
+        }
+        
+        // Llamar a la función para actualizar el contador al cargar la página
+        actualizarContadorCarrito();
+    </script>
 
 </body>
 

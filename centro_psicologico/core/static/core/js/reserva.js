@@ -149,6 +149,7 @@ function actualizarContadorCarrito() {
 
 actualizarContadorCarrito();
 
+
 // Función para calcular el precio total de las reservas
 function calcularPrecioTotal() {
     let precioTotal = 0;
