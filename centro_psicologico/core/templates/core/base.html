@@ -73,9 +73,15 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'quienes-somos' %}">Quienes Somos</a>
                         </li>
+                        {% if request.user.is_superuser %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'listar_reserva' %}">Reservas</a>
                         </li>
+                        {% else%}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'listar_reservas_usuario' %}">Reservas</a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

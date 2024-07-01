@@ -55,6 +55,7 @@ def listar_reserva(request):
         'paginator': paginator
     }
     return render(request, 'core/reserva/listar.html', data)
+
 def modificar_reserva(request, id):
     
     reservas = get_object_or_404(ReservaHora, id=id)

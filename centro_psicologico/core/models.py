@@ -24,7 +24,10 @@ def get_precio_consulta(tipo_consulta):
     return 0
 
 #modelo de formulario reserva horas
+from django.contrib.auth.models import User
+
 class ReservaHora(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     telefono = models.IntegerField()
@@ -38,4 +41,4 @@ class ReservaHora(models.Model):
     
     def calcular_precio(self):
         return get_precio_consulta(self.tipo_consulta)
-    
+
