@@ -1,7 +1,6 @@
 from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
-
 # Create your models here.
 
 #arreglo de opciones para tipo_consulta

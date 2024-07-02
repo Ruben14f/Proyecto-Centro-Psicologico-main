@@ -40,21 +40,27 @@ class PagosView(TemplateView):
     
     
 def listar_reserva(request):
-    
-    reservas = ReservaHora.objects.all()
-    page = request.GET.get('page',1)
-    
-    try:
-        paginator = Paginator(reservas, 5)
-        reservas = paginator.get_page(page)
-    except:
-        raise Http404
-    
-    data = {
-        'reservas': reservas,
-        'paginator': paginator
-    }
-    return render(request, 'core/reserva/listar.html', data)
+    if request.user.is_authenticated:
+        if request.user.is_staff or request.user.is_superuser:
+            reservas = ReservaHora.objects.all()
+        else:
+            reservas = ReservaHora.objects.filter(user=request.user)
+        
+        page = request.GET.get('page', 1)
+        
+        try:
+            paginator = Paginator(reservas, 5)
+            reservas = paginator.get_page(page)
+        except:
+            raise Http404
+        
+        data = {
+            'reservas': reservas,
+            'paginator': paginator
+        }
+        return render(request, 'core/reserva/listar.html', data)
+    else:
+        return redirect('login')  # Redirige a login si no está autenticado
 
 def modificar_reserva(request, id):
     
@@ -89,12 +95,13 @@ class RedirectConfirmarView(TemplateView):
 
 @csrf_exempt
 def guardar_reservas(request):
-    if request.method == 'POST':
+    if request.method == 'POST' and request.user.is_authenticated:
         try:
             data = json.loads(request.body)
             # Procesar los datos y guardar las reservas en la base de datos
             for reserva_data in data:
                 reserva = ReservaHora(
+                    user=request.user,
                     nombre=reserva_data['nombre'],
                     apellido=reserva_data['apellido'],
                     telefono=reserva_data['telefono'],

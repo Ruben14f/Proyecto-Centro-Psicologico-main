@@ -1,40 +1,23 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-{% block title %}Reservas{% endblock %}
+{% block title %}Mis Reservas{% endblock %}
 {% block content %}
 
 <link rel="stylesheet" href="{% static 'core/css/estilo-listar.css' %}">
 
-{% if not request.user.is_authenticated %}
-<div style="padding-top: 150px;">
-
-</div>
-<div class="text-center">
-    <div>
-        <h1 class="card-tittle" style="padding-top: 50px;">No es posible mostrar reservas ya que debe iniciar sesión</h1>
-        <hr>
-    </div>
-    <br>
-    <div>
-        <h2 style="padding-top: 50px;">Si desea iniciar sesión o registrarse elija una opción</h2>
-    </div>
-    <br>
-    <div>
-        <a href="{% url 'signup'%}" class="btn btn-secondary">Registrarse</a>
-        <a href="{% url 'login'%}" class="btn btn-secondary">Iniciar Sesión</a>
-    </div>
-</div>
-
-{% else %}
-<div style="padding-top: 150px;">
-
-</div>
+{% if user.is_authenticated %}
+<div style="padding-top: 150px;"></div>
 
 <div class="card">
     <div class="card-body">
-        <h2>Listado de Reservas</h2>
+        {% if request.user.is_superuser %}
+        <h2>Reservas</h2>
         <hr>
+        {%else%}
+        <h2>Mis Reservas</h2>
+        <hr>
+        {%endif%}
         <div class="table-responsive">
             <table class="table table-striped table-hover">
                 <thead>
@@ -44,7 +27,7 @@
                         <th>Tipo Consulta</th>
                         <th>Tipo Modalidad</th>
                         <th>Fecha de Reserva</th>
-                        {% if request.user.is_superuser %}
+                        {% if user.is_superuser %}
                         <th>Opciones</th>
                         {% endif %}
                     </tr>
@@ -57,7 +40,7 @@
                         <td>{{ r.get_tipo_consulta_display }}</td>
                         <td>{{ r.get_tipo_modalidad_display }}</td>
                         <td>{{ r.fecha }} {{ r.hora }} </td>
-                        {% if request.user.is_superuser %}
+                        {% if user.is_superuser %}
                         <td>
                             <div class="btn-group" role="group">
                                 <a href="{% url 'modificar_reserva' r.id %}" class="btn btn-info btn-sm">Modificar</a>
@@ -75,14 +58,15 @@
     </div>
 </div>
 
+<div style="padding-bottom: 200px;"></div>
 
-
-<div style="padding-bottom: 200px;">
-
+{% else %}
+<div style="padding-top: 150px;"></div>
+<div class="text-center">
+    <h1 class="card-tittle">Debe iniciar sesión para ver sus reservas</h1>
+    <hr>
+    <a href="{% url 'login'%}" class="btn btn-secondary">Iniciar Sesión</a>
 </div>
-
 {% endif %}
-
-<script src="js/feriados.js"></script>
 
 {% endblock %}
