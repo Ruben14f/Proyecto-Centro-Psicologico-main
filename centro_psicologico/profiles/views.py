@@ -27,3 +27,4 @@ class ProfileDelete(DeleteView):
         self.object = self.get_object()
         self.object.delete()
         return super().delete(request, *args, **kwargs)
+    

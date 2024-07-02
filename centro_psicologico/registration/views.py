@@ -75,3 +75,9 @@ class ProfileDelete(DeleteView):
         user.delete()
         return redirect(self.success_url)
 
+@method_decorator(login_required, name='dispatch')
+def eliminar_usuario(request, user):
+    profile = Profile.objects.get(user=user)
+    profile.delete()
+
+    return redirect('index')
