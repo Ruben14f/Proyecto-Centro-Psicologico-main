@@ -35,6 +35,9 @@ class ReservaHora(models.Model):
     fecha = models.DateField(default=datetime.now)
     hora = models.CharField(max_length=5, default='09:00')
 
+    class Meta:
+        unique_together = ('user', 'fecha', 'hora')
+        
     def __str__(self):
         return f"{self.nombre} {self.apellido} - {self.fecha} {self.hora}"
     

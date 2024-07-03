@@ -182,30 +182,37 @@ function pasoDePago(event) {
     } 
 }
 
-function enviarReservasAJAX() {
+document.querySelector('.btn-pagar').addEventListener('click', enviarReservasAJAX);
 
+function enviarReservasAJAX() {
     const reservas = JSON.parse(localStorage.getItem('datos_reserva_final')) || [];
 
     if (reservas.length === 0) {
         alert("No tienes ninguna reserva seleccionada. Por favor, selecciona una reserva para continuar.");
-        return;  // Detiene la función si no hay reservas para enviar
+        return;
     }
+
+    // Eliminar duplicados basados en fecha y hora
+    const reservasUnicas = reservas.filter((reserva, index, self) =>
+        index === self.findIndex((t) => (
+            t.fecha === reserva.fecha && t.hora === reserva.hora
+        ))
+    );
 
     fetch('/guardar-reservas/', {
         method: 'POST',
-        
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRFToken': getCookie('csrftoken') // Obtener el token CSRF
+            'X-CSRFToken': getCookie('csrftoken')
         },
-        body: JSON.stringify(reservas),
+        body: JSON.stringify(reservasUnicas),
     })
     .then(response => response.json())
     .then(data => {
         if (data.message) {
             console.log('Reservas enviadas correctamente al backend.');
             localStorage.removeItem('datos_reserva_final');
-            window.location.href = "{% url 'wait_and_redirect' %}"; // Redirigir después de enviar las reservas
+            window.location.href = "{% url 'wait_and_redirect' %}";
         } else {
             console.error('Error en la respuesta del backend:', data.error);
         }
@@ -215,7 +222,6 @@ function enviarReservasAJAX() {
     });
 }
 
-document.querySelector('.btn-pagar').addEventListener('click', enviarReservasAJAX);
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {

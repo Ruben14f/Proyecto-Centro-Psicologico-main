@@ -35,7 +35,7 @@
                 <tbody>
                     {% for r in reservas %}
                     <tr>
-                        <td>{{ r.nombre }}</td>
+                        <td>{{ r.nombre }} {{ r.apellido }}</td>
                         <td>{{ r.telefono }}</td>
                         <td>{{ r.get_tipo_consulta_display }}</td>
                         <td>{{ r.get_tipo_modalidad_display }}</td>

@@ -98,21 +98,28 @@ def guardar_reservas(request):
     if request.method == 'POST' and request.user.is_authenticated:
         try:
             data = json.loads(request.body)
-            # Procesar los datos y guardar las reservas en la base de datos
             for reserva_data in data:
-                reserva = ReservaHora(
+                # Verificar si ya existe una reserva con la misma fecha y hora
+                existing_reserva = ReservaHora.objects.filter(
                     user=request.user,
-                    nombre=reserva_data['nombre'],
-                    apellido=reserva_data['apellido'],
-                    telefono=reserva_data['telefono'],
-                    tipo_consulta=reserva_data['tipo'],
-                    tipo_modalidad=reserva_data['tipo2'],
                     fecha=reserva_data['fecha'],
                     hora=reserva_data['hora']
-                )
-                reserva.save()
-            return HttpResponse(status=200)  # Respuesta exitosa
+                ).first()
+                
+                if not existing_reserva:
+                    reserva = ReservaHora(
+                        user=request.user,
+                        nombre=reserva_data['nombre'],
+                        apellido=reserva_data['apellido'],
+                        telefono=reserva_data['telefono'],
+                        tipo_consulta=reserva_data['tipo'],
+                        tipo_modalidad=reserva_data['tipo2'],
+                        fecha=reserva_data['fecha'],
+                        hora=reserva_data['hora']
+                    )
+                    reserva.save()
+            return HttpResponse(status=200)
         except json.JSONDecodeError as e:
-            return HttpResponse(status=400)  # Error en el formato JSON
+            return HttpResponse(status=400)
     else:
-        return HttpResponse(status=405)  # Método no permitido
+        return HttpResponse(status=405)
