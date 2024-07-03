@@ -17,6 +17,9 @@ class Profile(models.Model):
 
     class Meta:
         ordering = ['user__username']
+        
+    def __str__(self):
+        return self.user.username
 
 @receiver(post_save, sender=User)
 def ensure_profile_exists(sender, instance, **kwargs):
