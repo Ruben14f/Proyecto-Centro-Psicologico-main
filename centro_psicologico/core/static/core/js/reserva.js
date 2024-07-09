@@ -127,14 +127,21 @@ function limpiarLocalStorage() {
         alert("¡UPS! Al parecer, usted no tiene reserva agregada.");
     }
 }
+function mostrarMensajeEnModal(mensaje) {
+    document.getElementById('alertMessage').innerText = mensaje;
+
+    $('#alertModal').modal('show');
+}
+
 function limpiarLocalStorageFIN() {
     if (localStorage.getItem(CLAVE_RESERVAFINAL)) {
         localStorage.removeItem(CLAVE_RESERVAFINAL);
         window.location.reload();
     } else {
-        alert("¡UPS! Al parecer, usted no tiene reserva agregada.");
+        mostrarMensajeEnModal("Compra realizada correctamente.");
     }
 }
+
 
 console.log(reservasFinal); // Verifica el contenido de reservasFinal antes de guardarlo
 
