@@ -59,8 +59,8 @@ async function verificar() {
                 } else {
                     reservasGuardadas.push(reservaFinal);
                     localStorage.setItem(CLAVE_RESERVAFINAL, JSON.stringify(reservasGuardadas));
-                    alert("La reserva ha sido agregada al carrito de compras");
-                    actualizarContadorCarrito();  // Actualizar el contador
+                    $('#modal-reserva-exitosa').modal('show'); 
+                    actualizarContadorCarrito();  
                 }
             }
         } catch (error) {

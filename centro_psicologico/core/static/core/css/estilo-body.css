@@ -103,3 +103,7 @@ span#slogan{
 .boton:hover {
     background-color: rgb(40, 148, 137);
 }
+
+.nav-item {
+    list-style-type: none;
+}

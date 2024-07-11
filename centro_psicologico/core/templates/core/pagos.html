@@ -7,12 +7,12 @@
 
 <style>
   .hora-btn.selected {
-    background-color: #007bff; /* Color de fondo seleccionado */
-    color: #fff; /* Color de texto */
-    border-color: #007bff; /* Color de borde */
+    background-color: #007bff;
+    color: #fff; 
+    border-color: #007bff; 
 }
 .hora-btn{
-  background-color: white; /* Color de fondo seleccionado */
+  background-color: white; 
 }
 </style>
 
@@ -76,22 +76,24 @@
     </form>
 </div>
 <div class="modal fade" id="modal-reserva-exitosa" tabindex="-1" aria-labelledby="modalReservaExitosaLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalReservaExitosaLabel">Reserva Exitosa</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Tu reserva ha sido confirmada. Recibirás un correo con la confirmación de tu hora.
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok</button>
-        </div>
+          <div class="modal-header">
+              <h5 class="modal-title" id="modalReservaExitosaLabel">Reserva Exitosa</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              La reserva ha sido agregada al carrito de compras
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok</button>
+          </div>
       </div>
-    </div>
   </div>
+</div>
   <script src="{% static 'core/js/reserva.js' %}"></script>
+  
+
 
   <div style="padding: 50px;"></div>
   
